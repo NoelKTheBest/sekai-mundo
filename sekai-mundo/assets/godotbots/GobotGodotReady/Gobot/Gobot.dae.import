@@ -1,0 +1,58 @@
+[remap]
+
+importer="scene"
+importer_version=1
+type="PackedScene"
+uid="uid://bdp7yia7h0152"
+path="res://.godot/imported/Gobot.dae-6080277af091307ce302169d44112ca1.scn"
+
+[deps]
+
+source_file="res://assets/godotbots/GobotGodotReady/Gobot/Gobot.dae"
+dest_files=["res://.godot/imported/Gobot.dae-6080277af091307ce302169d44112ca1.scn"]
+
+[params]
+
+nodes/root_type="Spatial"
+nodes/root_name="Scene Root"
+nodes/root_script=null
+nodes/apply_root_scale=true
+nodes/root_scale=1.0
+nodes/import_as_skeleton_bones=false
+nodes/use_name_suffixes=true
+nodes/use_node_type_suffixes=true
+meshes/ensure_tangents=true
+meshes/generate_lods=true
+meshes/create_shadow_meshes=true
+meshes/light_baking=0
+meshes/lightmap_texel_size=0.1
+meshes/force_disable_compression=false
+skins/use_named_skins=true
+animation/import=true
+animation/fps=15
+animation/trimming=false
+animation/remove_immutable_tracks=true
+animation/import_rest_as_RESET=false
+import_script/path=""
+materials/extract=0
+materials/extract_format=0
+materials/extract_path=""
+_subresources={
+"materials": {
+"Material": {
+"use_external/enabled": true,
+"use_external/fallback_path": "res://assets/godotbots/GobotGodotReady/Gobot/Gobot_blue.material",
+"use_external/path": "res://assets/godotbots/GobotGodotReady/Gobot/Gobot_blue.material"
+},
+"Material.001": {
+"use_external/enabled": true,
+"use_external/fallback_path": "res://assets/godotbots/GobotGodotReady/Gobot/Gobot_white.material",
+"use_external/path": "res://assets/godotbots/GobotGodotReady/Gobot/Gobot_white.material"
+},
+"Material.002": {
+"use_external/enabled": true,
+"use_external/fallback_path": "res://assets/godotbots/GobotGodotReady/Gobot/Gobot_black.material",
+"use_external/path": "res://assets/godotbots/GobotGodotReady/Gobot/Gobot_black.material"
+}
+}
+}

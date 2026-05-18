@@ -1,0 +1,56 @@
+[gd_scene format=3 uid="uid://6iqjs1auia7s"]
+
+[ext_resource type="PackedScene" uid="uid://dsedflllrh1rr" path="res://assets/godotbots/GobotGodotReady/Gobot/Gobot.tscn" id="1_2367i"]
+[ext_resource type="Material" uid="uid://djce00ev4xjcb" path="res://maty/godotbotbeing.tres" id="2_8yy7u"]
+
+[node name="Gorf" type="Node3D" unique_id=1758051596]
+
+[node name="Gobot" parent="." unique_id=362190138 instance=ExtResource("1_2367i")]
+
+[node name="Skeleton3D" parent="Gobot/Armature" parent_id_path=PackedInt32Array(362190138, 485890930) index="0" unique_id=1004885326]
+bones/1/position = Vector3(-2.4808059, 2.2574413e-06, -1.351685)
+bones/1/rotation = Quaternion(0.54743373, 0.6082289, 0.3606344, 0.4475676)
+bones/2/position = Vector3(0, 0.19240212, -0.3055446)
+bones/2/rotation = Quaternion(5.617738e-06, 0.7446006, -0.6675103, 5.0663953e-06)
+bones/3/position = Vector3(0.20000005, 0.35784936, -0.045348167)
+bones/3/rotation = Quaternion(0.6916486, 0.24750724, -0.3539151, -0.5788838)
+bones/4/position = Vector3(0, 1.1920929e-07, -0.57203245)
+bones/4/rotation = Quaternion(-0.21201922, -0.75724053, -0.5062873, 0.3539885)
+bones/5/position = Vector3(0, 0, -0.88030726)
+bones/5/rotation = Quaternion(0.007366242, -0.7354904, -0.6774926, 0.0019098227)
+bones/6/position = Vector3(0, -2.3841858e-07, -1.0562775)
+bones/6/rotation = Quaternion(-0.44066536, -0.0136332195, -0.065677114, 0.8951618)
+bones/7/position = Vector3(0, -1.4901161e-07, -0.76965666)
+bones/7/rotation = Quaternion(-0.00039061904, 0.63548607, 0.7721075, 0.002718255)
+bones/8/position = Vector3(0, 0, -0.5552721)
+bones/8/rotation = Quaternion(0.14286767, -0.014546163, 0.082776174, 0.986167)
+bones/9/position = Vector3(0.9832715, -0.6312866, 0.2712934)
+bones/9/rotation = Quaternion(0, -0.8985543, 0.078003295, 0.43187472)
+bones/10/position = Vector3(-0.20000005, 0.35784936, -0.04534805)
+bones/10/rotation = Quaternion(-0.6916486, 0.24750721, -0.3539151, 0.5788839)
+bones/11/position = Vector3(0, 0, -0.57203245)
+bones/11/rotation = Quaternion(0.07807172, -0.8693349, -0.28833488, -0.39373195)
+bones/12/position = Vector3(0, 1.1920929e-07, -0.8803071)
+bones/12/rotation = Quaternion(0.0029124022, 0.2907952, 0.9567771, 0.0026970506)
+bones/13/position = Vector3(-5.9604645e-08, 0, -1.0562775)
+bones/13/rotation = Quaternion(0.0447315, -0.046533454, -0.13247052, 0.9890831)
+bones/14/position = Vector3(0, -2.9802322e-08, -0.7696565)
+bones/14/rotation = Quaternion(0.00019602574, 0.68896407, 0.7247904, -0.0027388188)
+bones/15/position = Vector3(-2.9802322e-08, 0, -0.55527186)
+bones/15/rotation = Quaternion(0.08779095, 0.009919606, -0.08345717, 0.9925872)
+bones/16/position = Vector3(-0.9832716, -0.6312866, 0.2712934)
+bones/16/rotation = Quaternion(-1.4901161e-08, 0.8985543, -0.07800332, 0.4318747)
+bones/17/position = Vector3(0.2277093, -0.043818235, -0.43279815)
+bones/17/rotation = Quaternion(0.023484696, -0.5407023, 0.84069735, -0.01781666)
+bones/18/position = Vector3(-0.2277093, -0.043818235, -0.43279815)
+bones/18/rotation = Quaternion(0.0040227477, 0.54789793, -0.8365302, -0.0029996042)
+bones/19/position = Vector3(-3.027974, 0.24552655, 1.0911455)
+bones/20/position = Vector3(0.1641407, 0.017966747, -0.52872145)
+bones/20/rotation = Quaternion(-0.41387028, 0.90680826, 4.4703484e-08, 0.080063835)
+bones/21/position = Vector3(-0.1641407, 0.017966747, -0.52872145)
+bones/21/rotation = Quaternion(0.41387022, 0.90680826, 3.3527613e-08, -0.08006384)
+
+[node name="UpperLegs" parent="Gobot/Armature/Skeleton3D" index="3" unique_id=963345075]
+material_override = ExtResource("2_8yy7u")
+
+[editable path="Gobot"]

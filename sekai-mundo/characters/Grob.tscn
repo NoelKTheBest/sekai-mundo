@@ -1,0 +1,7 @@
+[gd_scene format=3 uid="uid://b720xx4l3qwtx"]
+
+[ext_resource type="PackedScene" uid="uid://cqah1jx1x7o16" path="res://assets/godotbots/godot robot/3DGodotRobot.glb" id="1_jx35l"]
+
+[node name="Grob" type="Node3D" unique_id=1047804978]
+
+[node name="3DGodotRobot" parent="." unique_id=306271353 instance=ExtResource("1_jx35l")]

@@ -1,0 +1,16 @@
+[gd_scene format=3 uid="uid://dceuvosfk4tw2"]
+
+[ext_resource type="PackedScene" uid="uid://dtek3mqx4013p" path="res://assets/godotbots/godot 3d robot shooter/GodotRobot3rdPersonShooterFinal.glb" id="1_58cg7"]
+[ext_resource type="Material" uid="uid://djce00ev4xjcb" path="res://maty/godotbotbeing.tres" id="2_kofam"]
+
+[node name="Golo" type="Node3D" unique_id=1786129652]
+
+[node name="GodotRobot3rdPersonShooterFinal" parent="." unique_id=1523663380 instance=ExtResource("1_58cg7")]
+
+[node name="Rifle" parent="GodotRobot3rdPersonShooterFinal/RobotArmature/Skeleton3D/hand_R" parent_id_path=PackedInt32Array(1523663380, 135197672) index="0" unique_id=1309599644]
+visible = false
+
+[node name="Chest" parent="GodotRobot3rdPersonShooterFinal/RobotArmature/Skeleton3D" parent_id_path=PackedInt32Array(1523663380, 750945510) index="2" unique_id=1835234861]
+material_override = ExtResource("2_kofam")
+
+[editable path="GodotRobot3rdPersonShooterFinal"]

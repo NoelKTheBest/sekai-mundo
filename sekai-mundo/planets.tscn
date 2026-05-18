@@ -1,0 +1,49 @@
+[gd_scene format=3 uid="uid://ceq3f5saxqkf8"]
+
+[ext_resource type="ArrayMesh" uid="uid://ddnldwl2pshpv" path="res://assets/godotbots/Pixel_Planet_Pack_0001/PixelPlanet1_NORMAL/GG-0001-N.obj" id="1_ox4fd"]
+[ext_resource type="ArrayMesh" uid="uid://dyn21ulfl6rfm" path="res://assets/godotbots/Pixel_Planet_Pack_0001/PixelPlanet1_NORMAL/GG-0002-N.obj" id="2_yk03e"]
+[ext_resource type="ArrayMesh" uid="uid://lw1d6ir7t713" path="res://assets/godotbots/Pixel_Planet_Pack_0001/PixelPlanet1_NORMAL/NL-0001-N.obj" id="3_c62w1"]
+[ext_resource type="ArrayMesh" uid="uid://dlg4gju8s5jeb" path="res://assets/godotbots/Pixel_Planet_Pack_0001/PixelPlanet1_NORMAL/RP-0002-N.obj" id="4_emeep"]
+[ext_resource type="ArrayMesh" uid="uid://cln064ux7saq8" path="res://assets/godotbots/Pixel_Planet_Pack_0001/PixelPlanet1_NORMAL/SE-0002-N.obj" id="5_demyn"]
+[ext_resource type="ArrayMesh" uid="uid://bnodasptnrw37" path="res://assets/godotbots/Pixel_Planet_Pack_0001/PixelPlanet1_NORMAL/SE-0003-N.obj" id="6_utvq1"]
+[ext_resource type="ArrayMesh" uid="uid://bt3u1dij1xtrm" path="res://assets/godotbots/Pixel_Planet_Pack_0001/PixelPlanet1_NORMAL/SE-0005-N.obj" id="7_um0gg"]
+[ext_resource type="ArrayMesh" uid="uid://cuas1eq8ccq0u" path="res://assets/godotbots/Pixel_Planet_Pack_0001/PixelPlanet1_NORMAL/SE-0006-N.obj" id="8_7vm0p"]
+[ext_resource type="ArrayMesh" uid="uid://c8emh8cl1eowq" path="res://assets/godotbots/Pixel_Planet_Pack_0001/PixelPlanet1_NORMAL/SE-0009-N.obj" id="9_c74fs"]
+
+[node name="Node3D" type="Node3D" unique_id=724885135]
+
+[node name="Gg0001N" type="MeshInstance3D" parent="." unique_id=1341713111]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.8631468, 2.7956567, -0.8492284)
+mesh = ExtResource("1_ox4fd")
+
+[node name="Gg0002N" type="MeshInstance3D" parent="." unique_id=1147445836]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.468151, 0, -16.434834)
+mesh = ExtResource("2_yk03e")
+
+[node name="Nl0001N" type="MeshInstance3D" parent="." unique_id=750041463]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.0344553, 2.6027727, 12.402344)
+mesh = ExtResource("3_c62w1")
+
+[node name="Rp0002N" type="MeshInstance3D" parent="." unique_id=110960395]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.018634, 0, -17.61112)
+mesh = ExtResource("4_emeep")
+
+[node name="Se0002N" type="MeshInstance3D" parent="." unique_id=2140238417]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.1149807, 4.7683716e-07, -25.93242)
+mesh = ExtResource("5_demyn")
+
+[node name="Se0003N" type="MeshInstance3D" parent="." unique_id=2020373910]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.3392363, 0.25867224, -8.653862)
+mesh = ExtResource("6_utvq1")
+
+[node name="Se0005N" type="MeshInstance3D" parent="." unique_id=1359048391]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.97477, 0, -4.7743216)
+mesh = ExtResource("7_um0gg")
+
+[node name="Se0006N" type="MeshInstance3D" parent="." unique_id=1887910119]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.878608, 0, 3.4294767)
+mesh = ExtResource("8_7vm0p")
+
+[node name="Se0009N" type="MeshInstance3D" parent="." unique_id=473630768]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.017476, 0, 5.638449)
+mesh = ExtResource("9_c74fs")
