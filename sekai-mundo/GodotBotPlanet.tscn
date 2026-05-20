@@ -1,0 +1,16 @@
+[gd_scene format=3 uid="uid://d37kpfi0aa3in"]
+
+[ext_resource type="Texture2D" uid="uid://dsvidpjgs1l1b" path="res://assets/sprites/GodotBotPlanet_scaled_4x_pngcrushed.png" id="1_ms2ga"]
+[ext_resource type="Script" uid="uid://bscwbegfypjhg" path="res://planet.gd" id="2_srkny"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_srkny"]
+albedo_texture = ExtResource("1_ms2ga")
+
+[sub_resource type="SphereMesh" id="SphereMesh_ycp7u"]
+
+[node name="GodotBotPlanet" type="MeshInstance3D" unique_id=1281657980]
+transform = Transform3D(83, 0, 0, 0, 83, 0, 0, 0, 83, 0, 0, 0)
+material_override = SubResource("StandardMaterial3D_srkny")
+mesh = SubResource("SphereMesh_ycp7u")
+script = ExtResource("2_srkny")
+spin_speed = 0.013

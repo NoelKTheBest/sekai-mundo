@@ -1,0 +1,106 @@
+[gd_scene format=3 uid="uid://c3wu8f75mw4ae"]
+
+[ext_resource type="Texture2D" uid="uid://wyisfgwbegjx" path="res://assets/sprites/pixelart_starfields/pixelart_starfield.png" id="1_1bvp3"]
+[ext_resource type="Texture2D" uid="uid://csr5g2jgorevy" path="res://assets/sprites/pixelart_starfields/pixelart_starfield_corona.png" id="2_lquwl"]
+[ext_resource type="Texture2D" uid="uid://bddpih1w0val8" path="res://assets/sprites/pixelart_starfields/pixelart_starfield_diagonal_diffraction_spikes.png" id="3_7mycd"]
+[ext_resource type="PackedScene" uid="uid://d37kpfi0aa3in" path="res://GodotBotPlanet.tscn" id="4_272bh"]
+[ext_resource type="Script" uid="uid://djg1nuh5qmwpr" path="res://player.gd" id="4_lquwl"]
+[ext_resource type="PackedScene" uid="uid://dbcdlkiim1uat" path="res://satellite.tscn" id="6_7mycd"]
+[ext_resource type="Script" uid="uid://bscwbegfypjhg" path="res://planet.gd" id="7_272bh"]
+[ext_resource type="PackedScene" uid="uid://brcn8a5ee2o43" path="res://orbit.tscn" id="8_5vw27"]
+
+[sub_resource type="Environment" id="Environment_5vw27"]
+background_mode = 1
+
+[sub_resource type="Animation" id="Animation_5vw27"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PathFollow3D:progress_ratio")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_kek77"]
+resource_name = "orbit"
+length = 10.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PathFollow3D:progress_ratio")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 10),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 1.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_4c57u"]
+_data = {
+&"RESET": SubResource("Animation_5vw27"),
+&"orbit": SubResource("Animation_kek77")
+}
+
+[node name="Node3D" type="Node3D" unique_id=33642771]
+
+[node name="Sprite3D" type="Sprite3D" parent="." unique_id=687324290]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.8982475, 0, 0)
+visible = false
+texture = ExtResource("1_1bvp3")
+
+[node name="Sprite3D3" type="Sprite3D" parent="." unique_id=1343414501]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.2853093, 0, 0)
+visible = false
+texture = ExtResource("3_7mycd")
+
+[node name="Player" type="Camera3D" parent="." unique_id=1181995338]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 183)
+keep_aspect = 0
+script = ExtResource("4_lquwl")
+speed = 2.5
+rotation_speed = 1.0
+
+[node name="Sprite3D2" type="Sprite3D" parent="Player" unique_id=2075025355]
+transform = Transform3D(210, 0, 0, 0, 210, 0, 0, 0, 210, 0, 0, -418.6532)
+modulate = Color(0.8509804, 0.7058824, 0, 1)
+transparent = false
+texture_filter = 2
+texture = ExtResource("2_lquwl")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=2118375963]
+transform = Transform3D(1, 0, 0, 0, 0.64368296, 0.7652923, 0, -0.7652923, 0.64368296, 0, 0, 0)
+light_angular_distance = 32.9
+light_specular = 5.629
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1671193945]
+environment = SubResource("Environment_5vw27")
+
+[node name="Orbit" parent="." unique_id=1356420342 instance=ExtResource("8_5vw27")]
+transform = Transform3D(-3.1019786e-06, 0, -70.965004, 0, 70.965004, 0, 70.965004, 0, -3.1019786e-06, 0, 30.295, 0)
+
+[node name="PathFollow3D" type="PathFollow3D" parent="Orbit" unique_id=431110181]
+transform = Transform3D(-0.90998733, 0.020113293, -0.41428885, 0.022097507, 0.9997502, -9.316445e-10, 0.41404408, -0.009151546, -0.91052526, -2.455, 0, 0)
+
+[node name="GodotBotMoon" parent="Orbit/PathFollow3D" unique_id=1089709456 instance=ExtResource("6_7mycd")]
+transform = Transform3D(-0.15322508, 0.0037475352, 0.072588004, 0.003386723, 0.16954923, -0.0016044076, -0.07260573, 0, -0.15326248, 0.006, 0, -0.001)
+script = ExtResource("7_272bh")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Orbit" unique_id=566994513]
+libraries/ = SubResource("AnimationLibrary_4c57u")
+autoplay = &"orbit"
+
+[node name="GodotBotPlanet" parent="." unique_id=1281657980 instance=ExtResource("4_272bh")]
+
+[node name="DirectionalLight3D2" type="DirectionalLight3D" parent="." unique_id=26337758]
+transform = Transform3D(1, 0, 0, 0, -0.6460307, -0.7633113, 0, 0.7633113, -0.6460307, 0, 0, 0)
+light_energy = 0.007
+light_angular_distance = 70.76

@@ -11,13 +11,19 @@ config_version=5
 [application]
 
 config/name="sekai mundo"
+run/main_scene="uid://c3wu8f75mw4ae"
 config/features=PackedStringArray("4.6", "GL Compatibility")
 config/icon="res://icon.svg"
+
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/anthonyec.camera_preview/plugin.cfg")
 
 [file_customization]
 
 folder_colors={
 "res://assets/": "blue",
+"res://assets/sprites/": "orange",
 "res://characters/": "teal",
 "res://maty/": "green"
 }
@@ -32,6 +38,7 @@ import/blender/enabled=false
 
 [rendering]
 
+textures/canvas_textures/default_texture_filter=0
 rendering_device/driver.windows="d3d12"
 renderer/rendering_method="gl_compatibility"
 renderer/rendering_method.mobile="gl_compatibility"

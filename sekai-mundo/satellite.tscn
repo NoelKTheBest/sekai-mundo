@@ -1,0 +1,34 @@
+[gd_scene format=3 uid="uid://dbcdlkiim1uat"]
+
+[sub_resource type="Gradient" id="Gradient_6chu2"]
+offsets = PackedFloat32Array(0, 0.969163)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_u2kwt"]
+offset = Vector3(-571.42, 207.79, 0)
+fractal_octaves = 10
+fractal_lacunarity = 2.41
+fractal_gain = 0.75
+fractal_weighted_strength = 0.37
+domain_warp_enabled = true
+domain_warp_type = 1
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_47pra"]
+noise = SubResource("FastNoiseLite_u2kwt")
+color_ramp = SubResource("Gradient_6chu2")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_blaqe"]
+albedo_color = Color(0.44, 0.31181332, 0.2728, 1)
+metallic_specular = 0.0
+roughness = 0.0
+normal_enabled = true
+normal_texture = SubResource("NoiseTexture2D_47pra")
+rim = 0.05
+rim_tint = 1.0
+uv1_offset = Vector3(2.62, 0, 0)
+
+[sub_resource type="SphereMesh" id="SphereMesh_tyeb2"]
+material = SubResource("StandardMaterial3D_blaqe")
+radial_segments = 1839
+
+[node name="GodotBotMoon" type="MeshInstance3D" unique_id=1089709456]
+mesh = SubResource("SphereMesh_tyeb2")

@@ -1,3 +1,6 @@
 The game theme of Planet Game Jam is fully optional, just for inspiration.
 
 The theme of this edition of Planet Game Jam is: Division.
+
+00615c - dark cyan
+d9b400 - dirty gold?

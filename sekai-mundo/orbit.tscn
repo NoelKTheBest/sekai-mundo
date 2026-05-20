@@ -1,0 +1,14 @@
+[gd_scene format=3 uid="uid://brcn8a5ee2o43"]
+
+[sub_resource type="Curve3D" id="Curve3D_6chu2"]
+closed = true
+bake_interval = 5.21
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, -2.455, 0, 0, 0, 0, 0, 0, 0, 0, -2, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 2, 0, 0, 0, 0, 0, 0, 3, 0, 2, 0, 0, 0, 0, 0, 0, 5, 0, 1, 0, 0, 0, 0, 0, 0, 5, 0, -1, 0, 0, 0, 0, 0, 0, 3, 0, -2, 0, 0, 0, 0, 0, 0, 0, 0, -2, 0, 0, 0, 0, 0, 0, -2, 0, -1),
+"tilts": PackedFloat32Array(-0.02209933, 0.5883864, 1.710133, 2.2069464, 3.1139412, -2.5038123, -1.5807219, -0.7416632, 0)
+}
+point_count = 9
+
+[node name="Orbit" type="Path3D" unique_id=1356420342]
+transform = Transform3D(5.215, 0, 0, 0, 5.215, 0, 0, 0, 5.215, 0, 0, 0)
+curve = SubResource("Curve3D_6chu2")
