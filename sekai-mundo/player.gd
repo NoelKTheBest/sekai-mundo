@@ -2,6 +2,11 @@ extends Camera3D
 
 @export var speed = 5.0
 @export var rotation_speed = 3.5
+@export var canvas_bg_speed = 4
+
+@onready var bg: Sprite2D = $"../CanvasLayer/BG"
+@onready var canvas_layer: CanvasLayer = $"../CanvasLayer"
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -21,6 +26,9 @@ func _physics_process(delta: float) -> void:
 	var turn_strength = Input.get_axis("ui_left", "ui_right")
 	var move_strength = Input.get_axis("ui_up", "ui_down")
 	
+	rotate_y(-deg_to_rad(turn_strength * rotation_speed))
+	print(rotation)
+	
 	#var input_dir := Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
 	var direction := (transform.basis * Vector3(0, 0, move_strength)).normalized()
 	if direction:
@@ -30,7 +38,5 @@ func _physics_process(delta: float) -> void:
 		velocity.x = move_toward(velocity.x, 0, speed * delta)
 		velocity.z = move_toward(velocity.z, 0, speed * delta)
 	
-	#print("x: ", velocity.x, "; z: ", velocity.z)
-	position.z += velocity.z
-	rotate_y(-deg_to_rad(turn_strength * rotation_speed))
-	#deg_to_rad()
+	position += velocity
+	canvas_layer.offset.x += -(turn_strength * rotation_speed) * canvas_bg_speed

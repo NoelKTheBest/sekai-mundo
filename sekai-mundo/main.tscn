@@ -8,9 +8,16 @@
 [ext_resource type="PackedScene" uid="uid://dbcdlkiim1uat" path="res://satellite.tscn" id="6_7mycd"]
 [ext_resource type="Script" uid="uid://bscwbegfypjhg" path="res://planet.gd" id="7_272bh"]
 [ext_resource type="PackedScene" uid="uid://brcn8a5ee2o43" path="res://orbit.tscn" id="8_5vw27"]
+[ext_resource type="Texture2D" uid="uid://b8ghlejaxmqq6" path="res://assets/sprites/download (3).png" id="9_kek77"]
+[ext_resource type="Texture2D" uid="uid://cq8l6oxwcysdw" path="res://assets/sprites/download (5).png" id="10_w48qg"]
+[ext_resource type="Texture2D" uid="uid://rlyub12aabti" path="res://assets/sprites/download (6).png" id="11_vivmo"]
+[ext_resource type="Texture2D" uid="uid://btg2kr66wop30" path="res://assets/sprites/download (7).png" id="12_2cqfq"]
+[ext_resource type="Texture2D" uid="uid://ckinirv2qoq12" path="res://assets/sprites/download (8).png" id="13_yaehf"]
+[ext_resource type="Texture2D" uid="uid://crvxwrlvnubkv" path="res://assets/sprites/download (10).png" id="14_074og"]
 
 [sub_resource type="Environment" id="Environment_5vw27"]
-background_mode = 1
+background_mode = 3
+background_canvas_max_layer = 1
 
 [sub_resource type="Animation" id="Animation_5vw27"]
 length = 0.001
@@ -66,15 +73,9 @@ texture = ExtResource("3_7mycd")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 183)
 keep_aspect = 0
 script = ExtResource("4_lquwl")
-speed = 2.5
+speed = 7.22
 rotation_speed = 1.0
-
-[node name="Sprite3D2" type="Sprite3D" parent="Player" unique_id=2075025355]
-transform = Transform3D(210, 0, 0, 0, 210, 0, 0, 0, 210, 0, 0, -418.6532)
-modulate = Color(0.8509804, 0.7058824, 0, 1)
-transparent = false
-texture_filter = 2
-texture = ExtResource("2_lquwl")
+canvas_bg_speed = 14
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=2118375963]
 transform = Transform3D(1, 0, 0, 0, 0.64368296, 0.7652923, 0, -0.7652923, 0.64368296, 0, 0, 0)
@@ -84,11 +85,19 @@ light_specular = 5.629
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1671193945]
 environment = SubResource("Environment_5vw27")
 
+[node name="Sprite3D2" type="Sprite3D" parent="." unique_id=2075025355]
+transform = Transform3D(181.86536, 0, -105, 0, 210, 0, 105, 0, 181.86536, 506, 0, -235.6532)
+visible = false
+modulate = Color(0.8509804, 0.7058824, 0, 1)
+transparent = false
+texture_filter = 2
+texture = ExtResource("2_lquwl")
+
 [node name="Orbit" parent="." unique_id=1356420342 instance=ExtResource("8_5vw27")]
 transform = Transform3D(-3.1019786e-06, 0, -70.965004, 0, 70.965004, 0, 70.965004, 0, -3.1019786e-06, 0, 30.295, 0)
 
 [node name="PathFollow3D" type="PathFollow3D" parent="Orbit" unique_id=431110181]
-transform = Transform3D(-0.90998733, 0.020113293, -0.41428885, 0.022097507, 0.9997502, -9.316445e-10, 0.41404408, -0.009151546, -0.91052526, -2.455, 0, 0)
+transform = Transform3D(-0.90998733, 0.020113291, -0.41428885, 0.022097507, 0.9997501, -9.316445e-10, 0.41404408, -0.009151545, -0.91052526, -2.455, 0, 0)
 
 [node name="GodotBotMoon" parent="Orbit/PathFollow3D" unique_id=1089709456 instance=ExtResource("6_7mycd")]
 transform = Transform3D(-0.15322508, 0.0037475352, 0.072588004, 0.003386723, 0.16954923, -0.0016044076, -0.07260573, 0, -0.15326248, 0.006, 0, -0.001)
@@ -104,3 +113,58 @@ autoplay = &"orbit"
 transform = Transform3D(1, 0, 0, 0, -0.6460307, -0.7633113, 0, 0.7633113, -0.6460307, 0, 0, 0)
 light_energy = 0.007
 light_angular_distance = 70.76
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1174235322]
+follow_viewport_scale = 1.574
+
+[node name="BG" type="Sprite2D" parent="CanvasLayer" unique_id=1505206425]
+texture_filter = 1
+texture_repeat = 2
+position = Vector2(415, 167)
+texture = ExtResource("1_1bvp3")
+offset = Vector2(160, 160)
+region_enabled = true
+region_rect = Rect2(0, 0, 51200, 5120)
+
+[node name="Sprite2D2" type="Sprite2D" parent="CanvasLayer" unique_id=319777683]
+position = Vector2(312, 255)
+texture = ExtResource("9_kek77")
+
+[node name="Download(5)" type="Sprite2D" parent="CanvasLayer" unique_id=1804432997]
+position = Vector2(1855, 551)
+scale = Vector2(0.38, 0.38)
+texture = ExtResource("10_w48qg")
+
+[node name="Download(6)" type="Sprite2D" parent="CanvasLayer" unique_id=1310974427]
+position = Vector2(-1618, 127)
+scale = Vector2(0.43, 0.43)
+texture = ExtResource("11_vivmo")
+
+[node name="Download(7)" type="Sprite2D" parent="CanvasLayer" unique_id=1290959958]
+position = Vector2(-736, 542)
+texture = ExtResource("12_2cqfq")
+
+[node name="Download(8)" type="Sprite2D" parent="CanvasLayer" unique_id=596651971]
+position = Vector2(-2860, 450)
+texture = ExtResource("13_yaehf")
+
+[node name="Download(10)" type="Sprite2D" parent="CanvasLayer" unique_id=420325378]
+position = Vector2(3419, 119)
+scale = Vector2(0.38, 0.38)
+texture = ExtResource("14_074og")
+
+[node name="Download(6)2" type="Sprite2D" parent="CanvasLayer" unique_id=283839178]
+position = Vector2(-4826, 368)
+texture = ExtResource("11_vivmo")
+
+[node name="Download(8)2" type="Sprite2D" parent="CanvasLayer" unique_id=1533830230]
+position = Vector2(4167, 398)
+scale = Vector2(1.55, 1.55)
+texture = ExtResource("13_yaehf")
+
+[node name="Download(5)2" type="Sprite2D" parent="CanvasLayer" unique_id=1019604574]
+self_modulate = Color(0.42000002, 0.8743333, 1, 1)
+position = Vector2(2437, 159)
+rotation = 2.417281
+scale = Vector2(1.24, 1.24)
+texture = ExtResource("10_w48qg")
