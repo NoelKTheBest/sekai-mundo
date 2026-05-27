@@ -5,7 +5,7 @@ extends Camera3D
 @export var canvas_bg_speed = 4
 
 @onready var bg: Sprite2D = $"../CanvasLayer/BG"
-@onready var canvas_layer: CanvasLayer = $"../CanvasLayer"
+@onready var canvas_layer: CanvasLayer = $"../WorldEnvironmentBGLayer"
 
 
 # Called when the node enters the scene tree for the first time.

@@ -1,0 +1,25 @@
+[gd_scene format=3 uid="uid://buk307ne1hqcy"]
+
+[ext_resource type="PackedScene" uid="uid://ogmwj4ging0j" path="res://characters/GB.tscn" id="1_44gc5"]
+[ext_resource type="PackedScene" uid="uid://b720xx4l3qwtx" path="res://characters/Grob.tscn" id="2_612pj"]
+
+[sub_resource type="Environment" id="Environment_44gc5"]
+background_mode = 3
+background_canvas_max_layer = 1
+
+[node name="Node3D" type="Node3D" unique_id=332526933]
+
+[node name="GB" parent="." unique_id=1757613948 instance=ExtResource("1_44gc5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.7306961, 0, 0)
+
+[node name="Grob" parent="." unique_id=1047804978 instance=ExtResource("2_612pj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.8880084, 0, 0)
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1945644179]
+transform = Transform3D(1, 0, 0, 0, 0.94054335, 0.33967376, 0, -0.33967376, 0.94054335, 0, 0, 0)
+
+[node name="Camera3D" type="Camera3D" parent="." unique_id=708238471]
+transform = Transform3D(1, 0, 0, 0, 0.9964091, 0.08466915, 0, -0.08466915, 0.9964091, 0, 0.9333713, 3.0864055)
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1889617695]
+environment = SubResource("Environment_44gc5")
