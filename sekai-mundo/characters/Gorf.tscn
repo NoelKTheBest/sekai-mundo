@@ -1,9 +1,11 @@
 [gd_scene format=3 uid="uid://6iqjs1auia7s"]
 
+[ext_resource type="Script" uid="uid://cbvdv1ue8c28u" path="res://characters/godot_bot.gd" id="1_8yy7u"]
 [ext_resource type="PackedScene" uid="uid://dsedflllrh1rr" path="res://assets/godotbots/GobotGodotReady/Gobot/Gobot.tscn" id="1_2367i"]
 [ext_resource type="Material" uid="uid://djce00ev4xjcb" path="res://maty/godotbotbeing.tres" id="2_8yy7u"]
 
 [node name="Gorf" type="Node3D" unique_id=1758051596]
+script = ExtResource("1_8yy7u")
 
 [node name="Gobot" parent="." unique_id=362190138 instance=ExtResource("1_2367i")]
 

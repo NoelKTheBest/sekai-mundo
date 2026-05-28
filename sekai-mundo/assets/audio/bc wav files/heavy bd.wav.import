@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://dmm4ksvej2hmh"
+path="res://.godot/imported/heavy bd.wav-5da11678b0cdd63c0e8f23e6734aabda.sample"
+
+[deps]
+
+source_file="res://assets/audio/bc wav files/heavy bd.wav"
+dest_files=["res://.godot/imported/heavy bd.wav-5da11678b0cdd63c0e8f23e6734aabda.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

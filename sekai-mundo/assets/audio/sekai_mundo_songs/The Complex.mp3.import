@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://cvtl8rrxua887"
+path="res://.godot/imported/The Complex.mp3-9b7fd70ab5657fb6b7ad2b51115417e1.mp3str"
+
+[deps]
+
+source_file="res://assets/audio/sekai_mundo_songs/The Complex.mp3"
+dest_files=["res://.godot/imported/The Complex.mp3-9b7fd70ab5657fb6b7ad2b51115417e1.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

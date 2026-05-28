@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://d1op85o67bl23"
+path="res://.godot/imported/Bleeping Demo.mp3-aab4b104f30752f730e94ab46e76675b.mp3str"
+
+[deps]
+
+source_file="res://assets/audio/sekai_mundo_songs/Bleeping Demo.mp3"
+dest_files=["res://.godot/imported/Bleeping Demo.mp3-aab4b104f30752f730e94ab46e76675b.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

@@ -2,9 +2,11 @@
 
 [ext_resource type="Texture2D" uid="uid://wyisfgwbegjx" path="res://assets/sprites/pixelart_starfields/pixelart_starfield.png" id="1_1bvp3"]
 [ext_resource type="Texture2D" uid="uid://csr5g2jgorevy" path="res://assets/sprites/pixelart_starfields/pixelart_starfield_corona.png" id="2_lquwl"]
+[ext_resource type="Script" uid="uid://cw12kmd1cxfk5" path="res://characters/welcome_bot.gd" id="2_lswn8"]
 [ext_resource type="Texture2D" uid="uid://bddpih1w0val8" path="res://assets/sprites/pixelart_starfields/pixelart_starfield_diagonal_diffraction_spikes.png" id="3_7mycd"]
 [ext_resource type="PackedScene" uid="uid://d37kpfi0aa3in" path="res://GodotBotPlanet.tscn" id="4_272bh"]
 [ext_resource type="Script" uid="uid://djg1nuh5qmwpr" path="res://player.gd" id="4_lquwl"]
+[ext_resource type="AudioStream" uid="uid://d1op85o67bl23" path="res://assets/audio/sekai_mundo_songs/Bleeping Demo.mp3" id="5_d13ii"]
 [ext_resource type="PackedScene" uid="uid://dbcdlkiim1uat" path="res://satellite.tscn" id="6_7mycd"]
 [ext_resource type="Script" uid="uid://bscwbegfypjhg" path="res://planet.gd" id="7_272bh"]
 [ext_resource type="PackedScene" uid="uid://brcn8a5ee2o43" path="res://orbit.tscn" id="8_5vw27"]
@@ -15,9 +17,28 @@
 [ext_resource type="PackedScene" uid="uid://ogmwj4ging0j" path="res://characters/GB.tscn" id="11_074og"]
 [ext_resource type="Texture2D" uid="uid://rlyub12aabti" path="res://assets/sprites/download (6).png" id="11_vivmo"]
 [ext_resource type="Texture2D" uid="uid://btg2kr66wop30" path="res://assets/sprites/download (7).png" id="12_2cqfq"]
+[ext_resource type="PackedScene" uid="uid://6iqjs1auia7s" path="res://characters/Gorf.tscn" id="12_ryguw"]
+[ext_resource type="Script" uid="uid://cbvdv1ue8c28u" path="res://characters/godot_bot.gd" id="13_0odxb"]
+[ext_resource type="PackedScene" uid="uid://dceuvosfk4tw2" path="res://characters/Golo.tscn" id="13_d13ii"]
 [ext_resource type="Texture2D" uid="uid://ckinirv2qoq12" path="res://assets/sprites/download (8).png" id="13_yaehf"]
 [ext_resource type="Texture2D" uid="uid://crvxwrlvnubkv" path="res://assets/sprites/download (10).png" id="14_074og"]
 [ext_resource type="Texture2D" uid="uid://dsvidpjgs1l1b" path="res://assets/sprites/GodotBotPlanet_scaled_4x_pngcrushed.png" id="15_vivmo"]
+[ext_resource type="Script" uid="uid://bgu8q8g6l57bl" path="res://ui.gd" id="18_82xsv"]
+[ext_resource type="Texture2D" uid="uid://cm2e5wq7mfawo" path="res://icon.svg" id="20_getpj"]
+[ext_resource type="PackedScene" uid="uid://d2h1h2lm577ua" path="res://TransmissionScreen.tscn" id="24_1u8w0"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_ryguw"]
+radius = 6.940539
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_a6jrf"]
+animation = &"wave"
+
+[sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_xuqvo"]
+nodes/Animation/node = SubResource("AnimationNodeAnimation_a6jrf")
+nodes/Animation/position = Vector2(132, 152.90001)
+node_connections = [&"output", 0, &"Animation"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_1u8w0"]
 
 [sub_resource type="Environment" id="Environment_5vw27"]
 background_mode = 3
@@ -63,6 +84,54 @@ _data = {
 &"orbit": SubResource("Animation_kek77")
 }
 
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_0odxb"]
+animation = &"Dive"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_lswn8"]
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_a6jrf"]
+states/Dive/node = SubResource("AnimationNodeAnimation_0odxb")
+states/Dive/position = Vector2(414, 59)
+transitions = ["Start", "Dive", SubResource("AnimationNodeStateMachineTransition_lswn8")]
+graph_offset = Vector2(-49, -33)
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_qsp4k"]
+animation = &"fall"
+
+[sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_kq58d"]
+graph_offset = Vector2(-230.00888, 40.161636)
+nodes/Animation/node = SubResource("AnimationNodeAnimation_qsp4k")
+nodes/Animation/position = Vector2(128, 193)
+node_connections = [&"output", 0, &"Animation"]
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_lswn8"]
+animation = &"idle"
+
+[sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_a6jrf"]
+graph_offset = Vector2(-358, 37)
+nodes/Animation/node = SubResource("AnimationNodeAnimation_lswn8")
+nodes/Animation/position = Vector2(120, 183)
+node_connections = [&"output", 0, &"Animation"]
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_xuqvo"]
+animation = &"walk"
+
+[sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_qsp4k"]
+graph_offset = Vector2(-337, 64)
+nodes/Animation/node = SubResource("AnimationNodeAnimation_xuqvo")
+nodes/Animation/position = Vector2(145, 206)
+node_connections = [&"output", 0, &"Animation"]
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_seu75"]
+animation = &"run"
+
+[sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_htxhm"]
+graph_offset = Vector2(-343, 29)
+nodes/Animation/node = SubResource("AnimationNodeAnimation_seu75")
+nodes/Animation/position = Vector2(88, 155.1)
+node_connections = [&"output", 0, &"Animation"]
+
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_vivmo"]
 blend_mode = 3
 particles_animation = true
@@ -71,6 +140,48 @@ particles_anim_v_frames = 1
 particles_anim_loop = false
 
 [node name="Node3D" type="Node3D" unique_id=33642771]
+
+[node name="WelcomeBot" parent="." unique_id=1757613948 instance=ExtResource("11_074og")]
+transform = Transform3D(-0.99998564, 0, -0.005358106, -0.0015509906, 0.95718825, 0.28946203, 0.005128716, 0.2894662, -0.9571745, 0, 1.096061, -145.70113)
+script = ExtResource("2_lswn8")
+rotation_speed = 0.0
+
+[node name="Skeleton3D" parent="WelcomeBot/godot_plush_model/Rig" parent_id_path=PackedInt32Array(1757613948, 458721011, 154476934) index="0" unique_id=1405342878]
+bones/0/position = Vector3(-0.009644307, 0.7862793, 0)
+bones/0/rotation = Quaternion(2.1855424e-08, 1.10849524e-10, 0.005071884, 0.9999871)
+bones/1/rotation = Quaternion(0.021900794, -0.036847852, 0.88838273, -0.4570982)
+bones/2/rotation = Quaternion(0.06512782, -0.704101, 0.06512783, 0.7041012)
+bones/4/rotation = Quaternion(-0.027935771, -0.048577517, 0.8878185, 0.4567691)
+bones/5/rotation = Quaternion(0.09210466, -2.0888399e-07, -1.168479e-07, 0.9957494)
+bones/7/position = Vector3(-0.009644307, 0.7862793, 0)
+bones/7/rotation = Quaternion(0.9999871, 0.005071884, 1.10849524e-10, 2.1855424e-08)
+bones/8/rotation = Quaternion(-0.019004785, -0.0004691013, -0.004912337, 0.99980724)
+bones/9/position = Vector3(-3.1135386e-08, 0.1532221, 1.08025855e-08)
+bones/9/rotation = Quaternion(0.16613807, 0.0009982232, -0.00023090722, 0.9861019)
+bones/10/position = Vector3(8.022176e-09, 0.20707548, 1.563621e-08)
+bones/10/rotation = Quaternion(-0.5197596, -0.21158674, -0.04777942, 0.826316)
+bones/11/position = Vector3(1.584344e-08, 0.25127903, -2.4805324e-08)
+bones/11/rotation = Quaternion(-0.00011452154, 0.9323838, -0.36146998, 5.084109e-05)
+bones/12/rotation = Quaternion(-0.040463455, -0.00047298628, -0.004968656, 0.9991686)
+bones/13/position = Vector3(6.518901e-09, 0.15279645, -8.172201e-09)
+bones/13/rotation = Quaternion(0.20395762, 0.0011536595, -0.00033573125, 0.97897905)
+bones/14/position = Vector3(-1.4494944e-08, 0.20664597, 2.5279366e-08)
+bones/14/rotation = Quaternion(-0.5374618, 0.20714629, 0.063262396, 0.8149989)
+bones/15/position = Vector3(1.6880678e-08, 0.25127897, -2.6835433e-08)
+bones/15/rotation = Quaternion(-1.0226061e-05, 0.9323838, -0.36146995, 0.0002710521)
+
+[node name="AnimationPlayer" parent="WelcomeBot/godot_plush_model" parent_id_path=PackedInt32Array(1757613948, 458721011) index="1" unique_id=1573530794]
+autoplay = &"wave"
+
+[node name="Area3D" type="Area3D" parent="WelcomeBot" unique_id=1527272782]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="WelcomeBot/Area3D" unique_id=2060516913]
+shape = SubResource("SphereShape3D_ryguw")
+
+[node name="AnimationTree" type="AnimationTree" parent="WelcomeBot" unique_id=1034923220]
+root_node = NodePath("../godot_plush_model")
+tree_root = SubResource("AnimationNodeBlendTree_xuqvo")
+anim_player = NodePath("../godot_plush_model/AnimationPlayer")
 
 [node name="Sprite3D" type="Sprite3D" parent="." unique_id=687324290]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.8982475, 0, 0)
@@ -83,12 +194,22 @@ visible = false
 texture = ExtResource("3_7mycd")
 
 [node name="Player" type="Camera3D" parent="." unique_id=1181995338]
-transform = Transform3D(-0.9998986, 0.0013271151, -0.0141793955, 6.938894e-18, 0.99564856, 0.09318735, 0.014241364, 0.0931779, -0.9955476, 0, 2, -84.417816)
+transform = Transform3D(-0.9998986, 0.001327115, -0.014179394, -0.00040062363, 0.9926334, 0.121156216, 0.0142357275, 0.12114961, -0.9925322, 0, 3.2636561, -160.24553)
 keep_aspect = 0
 script = ExtResource("4_lquwl")
-speed = 7.22
+speed = 16.68
 rotation_speed = 1.0
-canvas_bg_speed = 14
+canvas_bg_speed = 12
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="Player" unique_id=305833683]
+stream = ExtResource("5_d13ii")
+volume_db = 10.079
+
+[node name="Area3D" type="Area3D" parent="Player" unique_id=59082213]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Player/Area3D" unique_id=523765007]
+shape = SubResource("CapsuleShape3D_1u8w0")
+debug_color = Color(0.9115449, 0.00010299981, 0.72801316, 0.41960785)
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1671193945]
 environment = SubResource("Environment_5vw27")
@@ -105,7 +226,7 @@ texture = ExtResource("2_lquwl")
 transform = Transform3D(-3.1019786e-06, 0, -70.965004, 0, 70.965004, 0, 70.965004, 0, -3.1019786e-06, 0, 30.295, 0)
 
 [node name="PathFollow3D" type="PathFollow3D" parent="Orbit" unique_id=431110181]
-transform = Transform3D(-0.90998733, 0.020113258, -0.41428885, 0.022097507, 0.99974835, -9.316445e-10, 0.41404408, -0.0091515295, -0.91052526, -2.455, 0, 0)
+transform = Transform3D(-0.90998733, 0.020113243, -0.41428885, 0.022097507, 0.9997477, -9.316445e-10, 0.41404408, -0.009151523, -0.91052526, -2.455, 0, 0)
 
 [node name="GodotBotMoon" parent="Orbit/PathFollow3D" unique_id=1089709456 instance=ExtResource("6_7mycd")]
 transform = Transform3D(-0.15322508, 0.0037475352, 0.072588004, 0.003386723, 0.16954923, -0.0016044076, -0.07260573, 0, -0.15326248, 0.006, 0, -0.001)
@@ -116,7 +237,6 @@ libraries/ = SubResource("AnimationLibrary_4c57u")
 autoplay = &"orbit"
 
 [node name="GodotBotPlanet" parent="." unique_id=1281657980 instance=ExtResource("4_272bh")]
-spin_speed = 0.408
 
 [node name="Node3D" type="Node3D" parent="GodotBotPlanet" unique_id=1543094606]
 transform = Transform3D(0.9999999, 0, 0, 0, 0.9999999, 0, 0, 0, 0.9999999, 0, 0, 0)
@@ -125,9 +245,419 @@ spin_speed = 0.0
 
 [node name="Grob" parent="GodotBotPlanet/Node3D" unique_id=1047804978 instance=ExtResource("10_074og")]
 transform = Transform3D(-0.019319056, 0, -0.0051743602, 0, 0.020000001, 0, 0.0051743602, 0, -0.019319056, 0, 0, -0.8224788)
+script = ExtResource("13_0odxb")
+metadata/_edit_group_ = true
 
-[node name="GB" parent="GodotBotPlanet/Node3D" unique_id=1757613948 instance=ExtResource("11_074og")]
-transform = Transform3D(0.02, 0, 0, 0, 0.02, 0, 0, 0, 0.02, 0.45270807, 0, 0.52928334)
+[node name="Skeleton3D" parent="GodotBotPlanet/Node3D/Grob/3DGodotRobot/RobotArmature" parent_id_path=PackedInt32Array(1047804978, 306271353, 1249329362) index="0" unique_id=476742430]
+bones/0/position = Vector3(-8.287493e-11, 0.87294644, 0.029855084)
+bones/0/rotation = Quaternion(0.014909217, 1.1919607e-07, 1.7773131e-09, 0.99988884)
+bones/1/rotation = Quaternion(0.02916875, 0.13736843, -0.008151745, 0.9900569)
+bones/4/position = Vector3(3.8677803e-09, 0.15150139, -0.011741015)
+bones/4/rotation = Quaternion(0.08494558, -0.13872111, 0.0070500304, 0.9866565)
+bones/5/rotation = Quaternion(0.008212386, -2.466766e-10, -1.929252e-09, 0.99996626)
+bones/7/position = Vector3(7.490657e-08, 0.54060847, 0.3122278)
+bones/7/rotation = Quaternion(0.00393964, 1.19189565e-07, -4.7306414e-10, 0.99999225)
+bones/8/position = Vector3(9.960407e-08, 0.085749224, 0.4187463)
+bones/8/rotation = Quaternion(0.003939639, 1.1918951e-07, -4.5851045e-10, 0.99999225)
+bones/9/position = Vector3(0.26732144, 0.0764982, -0.028223984)
+bones/9/rotation = Quaternion(-0.44013977, -0.41126359, -0.56197596, 0.56685305)
+bones/10/position = Vector3(0.00943596, 0.223043, -8.3778796e-05)
+bones/10/rotation = Quaternion(-0.14549921, 0.7203363, -0.20711249, 0.6457941)
+bones/11/rotation = Quaternion(0.24947558, -0.08076015, 0.050575905, 0.96368134)
+bones/12/rotation = Quaternion(0.020934895, 0.017021658, -0.017671373, 0.9994797)
+bones/13/position = Vector3(-0.26732144, 0.0764982, -0.02822399)
+bones/13/rotation = Quaternion(-0.50531465, 0.47724748, 0.50417954, 0.5125378)
+bones/14/position = Vector3(-0.009435973, 0.223043, -8.366026e-05)
+bones/14/rotation = Quaternion(-0.15225649, -0.71874243, 0.21305892, 0.6440755)
+bones/15/rotation = Quaternion(0.3217317, 0.07669852, -0.05654607, 0.94202375)
+bones/16/rotation = Quaternion(0.020934902, -0.017021645, 0.017671384, 0.9994797)
+bones/17/position = Vector3(0.276084, 0.06599521, -0.0034686895)
+bones/17/rotation = Quaternion(0.75394416, 0.0128252935, -0.017441038, 0.6565817)
+bones/18/rotation = Quaternion(0.8679203, 0.015822103, 0.009489819, 0.49636087)
+bones/19/rotation = Quaternion(-0.61065847, 0.0033618035, -0.0048094816, 0.7918724)
+bones/21/position = Vector3(-0.27608398, 0.06599527, -0.0034688246)
+bones/21/rotation = Quaternion(0.99244106, -0.0215624, 0.002181407, -0.12079342)
+bones/22/rotation = Quaternion(0.20193174, -0.008042817, -0.025483496, 0.97903496)
+bones/23/rotation = Quaternion(-0.63243103, -0.0034812521, 0.004700289, 0.7745946)
+bones/24/rotation = Quaternion(6.345563e-08, 0.9807643, -0.19519578, -1.8277876e-06)
+
+[node name="AnimationPlayer" parent="GodotBotPlanet/Node3D/Grob/3DGodotRobot" parent_id_path=PackedInt32Array(1047804978, 306271353) index="1" unique_id=863736044]
+autoplay = &"Run"
+
+[node name="Area3D" type="Area3D" parent="GodotBotPlanet/Node3D/Grob" unique_id=471127498]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="GodotBotPlanet/Node3D/Grob/Area3D" unique_id=421514935]
+shape = SubResource("SphereShape3D_ryguw")
+
+[node name="Grob2" parent="GodotBotPlanet/Node3D" unique_id=1280051965 instance=ExtResource("10_074og")]
+transform = Transform3D(-0.0040859217, -0.008969957, 0.017402448, -0.0004991811, 0.017819343, 0.009067637, -0.019571817, 0.0014181338, -0.0038643016, 0, -0.009398545, 0.8431383)
+script = ExtResource("13_0odxb")
+metadata/_edit_group_ = true
+
+[node name="Skeleton3D" parent="GodotBotPlanet/Node3D/Grob2/3DGodotRobot/RobotArmature" parent_id_path=PackedInt32Array(1280051965, 306271353, 1249329362) index="0" unique_id=476742430]
+bones/0/position = Vector3(1.1332058e-09, 0.8506955, 0.029855093)
+bones/0/rotation = Quaternion(0.16872588, 1.1868247e-07, -5.9176227e-08, 0.985663)
+bones/1/rotation = Quaternion(0.14086299, -1.1768366e-14, 3.358435e-08, 0.99002916)
+bones/4/position = Vector3(1.870354e-09, 0.1515015, -0.011740961)
+bones/4/rotation = Quaternion(-0.018329773, -6.8751916e-08, -4.15417e-08, 0.9998321)
+bones/5/rotation = Quaternion(-0.11407209, -5.520584e-14, 2.7196903e-08, 0.9934725)
+bones/7/position = Vector3(7.444092e-08, 0.5406087, 0.31222782)
+bones/8/rotation = Quaternion(0.003939635, 1.1920836e-07, -4.696411e-10, 0.99999225)
+bones/9/position = Vector3(0.2673214, 0.07649821, -0.028224103)
+bones/9/rotation = Quaternion(-0.13429715, -0.106388375, -0.7010736, 0.6922006)
+bones/10/position = Vector3(0.009435957, 0.223043, -8.380843e-05)
+bones/10/rotation = Quaternion(-0.29190546, 0.6839745, -0.29986897, 0.59753555)
+bones/11/rotation = Quaternion(-0.017577725, -0.09135095, 0.02711322, 0.9952944)
+bones/12/rotation = Quaternion(0.020934891, 0.017021652, -0.017671378, 0.9994797)
+bones/13/position = Vector3(-0.2673214, 0.07649821, -0.028224103)
+bones/13/rotation = Quaternion(-0.13429715, 0.106388375, 0.7010736, 0.6922006)
+bones/14/position = Vector3(-0.009435957, 0.223043, -8.380843e-05)
+bones/14/rotation = Quaternion(-0.29190546, -0.6839745, 0.29986897, 0.59753555)
+bones/15/rotation = Quaternion(-0.017577725, 0.09135095, -0.02711322, 0.9952944)
+bones/16/rotation = Quaternion(0.020934891, -0.017021652, 0.017671378, 0.9994797)
+bones/17/position = Vector3(0.276084, 0.06599515, -0.0034686914)
+bones/17/rotation = Quaternion(0.7066088, 0.011574074, -0.018287783, 0.7072734)
+bones/18/rotation = Quaternion(0.85202616, 0.015711019, 0.010283851, 0.52316225)
+bones/19/rotation = Quaternion(-0.6850879, 0.0038101156, -0.004462553, 0.72843677)
+bones/21/position = Vector3(-0.27608398, 0.06599521, -0.0034688117)
+bones/21/rotation = Quaternion(0.9944449, -0.021515856, 0.0025593345, -0.103003845)
+bones/22/rotation = Quaternion(0.24527171, -0.00865746, -0.025022931, 0.9690927)
+bones/23/rotation = Quaternion(-0.5550226, -0.0030270065, 0.0050095525, 0.8318148)
+bones/24/rotation = Quaternion(6.345633e-08, 0.9807643, -0.19519578, -1.8277864e-06)
+
+[node name="AnimationPlayer" parent="GodotBotPlanet/Node3D/Grob2/3DGodotRobot" parent_id_path=PackedInt32Array(1280051965, 306271353) index="1" unique_id=863736044]
+autoplay = &"Sprint"
+
+[node name="Area3D" type="Area3D" parent="GodotBotPlanet/Node3D/Grob2" unique_id=2138001497]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="GodotBotPlanet/Node3D/Grob2/Area3D" unique_id=757828607]
+shape = SubResource("SphereShape3D_ryguw")
+
+[node name="Grob3" parent="GodotBotPlanet/Node3D" unique_id=1148722024 instance=ExtResource("10_074og")]
+transform = Transform3D(-0.010361545, -0.0142242005, 0.009503186, 0.00358482, 0.009058343, 0.01746698, -0.016726851, 0.010752605, -0.0021433618, -0.8449897, 0, -0.15869972)
+script = ExtResource("13_0odxb")
+metadata/_edit_group_ = true
+
+[node name="Skeleton3D" parent="GodotBotPlanet/Node3D/Grob3/3DGodotRobot/RobotArmature" parent_id_path=PackedInt32Array(1148722024, 306271353, 1249329362) index="0" unique_id=476742430]
+bones/0/position = Vector3(-3.5255984e-16, 0.86128783, 0.029855084)
+bones/0/rotation = Quaternion(0.72261816, 8.240315e-08, 8.6142826e-08, 0.69124746)
+bones/1/rotation = Quaternion(0.0022589995, -7.424617e-15, 5.385886e-10, 0.9999975)
+bones/4/position = Vector3(2.8055988e-14, 0.15150145, -0.011741022)
+bones/4/rotation = Quaternion(-0.26995113, -1.1478348e-07, 3.218068e-08, 0.9628741)
+bones/5/rotation = Quaternion(-0.43278384, -6.900036e-14, 1.03183694e-07, 0.9014977)
+bones/7/position = Vector3(7.444091e-08, 0.5406087, 0.3122278)
+bones/8/position = Vector3(9.979073e-08, 0.06115747, 0.41855264)
+bones/8/rotation = Quaternion(0.003939635, 1.1920836e-07, -4.696411e-10, 0.99999225)
+bones/9/position = Vector3(0.26732144, 0.0764982, -0.028223986)
+bones/9/rotation = Quaternion(-0.5710791, -0.55685353, 0.43909428, -0.41349626)
+bones/10/position = Vector3(0.009435972, 0.22304294, -8.363007e-05)
+bones/10/rotation = Quaternion(-0.35644144, 0.6178471, -0.43310675, 0.551029)
+bones/11/rotation = Quaternion(-0.017577734, -0.09135095, 0.027113242, 0.9952944)
+bones/12/rotation = Quaternion(0.020934898, 0.017021652, -0.017671386, 0.9994797)
+bones/13/position = Vector3(-0.26732144, 0.0764982, -0.028223986)
+bones/13/rotation = Quaternion(-0.5710791, 0.55685353, -0.43909428, -0.41349626)
+bones/14/position = Vector3(-0.009435972, 0.22304294, -8.363007e-05)
+bones/14/rotation = Quaternion(-0.35644144, -0.6178471, 0.43310675, 0.5510291)
+bones/15/rotation = Quaternion(-0.017577723, 0.09135095, -0.027113244, 0.9952944)
+bones/16/rotation = Quaternion(0.020934898, -0.017021658, 0.017671384, 0.9994797)
+bones/17/position = Vector3(0.276084, 0.065995224, -0.0034686788)
+bones/17/rotation = Quaternion(0.9966471, 0.06886271, 0.0023796747, 0.04412198)
+bones/18/rotation = Quaternion(0.0996995, 0.0077853147, 0.026304739, 0.9946394)
+bones/19/rotation = Quaternion(-0.14418001, 0.00058710057, -0.0058200187, 0.9895342)
+bones/21/position = Vector3(-0.276084, 0.06599521, -0.003468812)
+bones/21/rotation = Quaternion(0.99465394, -0.06890246, -0.000110544395, 0.076916374)
+bones/22/rotation = Quaternion(-0.0061842757, -0.0049533797, -0.026989246, 0.99960434)
+bones/23/rotation = Quaternion(-0.09268993, -0.00028483442, 0.0058466312, 0.9956779)
+bones/24/rotation = Quaternion(6.1083036e-08, 0.9807643, -0.19519575, -1.8271915e-06)
+
+[node name="Area3D" type="Area3D" parent="GodotBotPlanet/Node3D/Grob3" unique_id=791330607]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="GodotBotPlanet/Node3D/Grob3/Area3D" unique_id=678121679]
+shape = SubResource("SphereShape3D_ryguw")
+
+[node name="AnimationTree" type="AnimationTree" parent="GodotBotPlanet/Node3D/Grob3" unique_id=356516839]
+root_node = NodePath("../3DGodotRobot")
+tree_root = SubResource("AnimationNodeStateMachine_a6jrf")
+anim_player = NodePath("../3DGodotRobot/AnimationPlayer")
+
+[node name="Grob4" parent="GodotBotPlanet/Node3D" unique_id=249479794 instance=ExtResource("10_074og")]
+transform = Transform3D(0.020000001, 0, 0, 0, -0.015814649, 0.012243241, 0, -0.012243241, -0.015814649, 0.8349546, 0.018061358, 0)
+script = ExtResource("13_0odxb")
+metadata/_edit_group_ = true
+
+[node name="Skeleton3D" parent="GodotBotPlanet/Node3D/Grob4/3DGodotRobot/RobotArmature" parent_id_path=PackedInt32Array(249479794, 306271353, 1249329362) index="0" unique_id=476742430]
+bones/0/position = Vector3(-1.9603408e-10, 0.8888654, 0.029855084)
+bones/0/rotation = Quaternion(0.014909217, 1.1919607e-07, 1.7773131e-09, 0.99988884)
+bones/1/rotation = Quaternion(0.028987741, -0.17597216, 0.010442593, 0.9839129)
+bones/4/position = Vector3(3.8677803e-09, 0.15150139, -0.011741015)
+bones/4/rotation = Quaternion(0.084416844, 0.17715243, -0.009003171, 0.9805151)
+bones/5/rotation = Quaternion(0.008212386, -2.466766e-10, -1.929252e-09, 0.99996626)
+bones/7/position = Vector3(7.490657e-08, 0.54060847, 0.3122278)
+bones/7/rotation = Quaternion(0.00393964, 1.19189565e-07, -4.7306414e-10, 0.99999225)
+bones/8/position = Vector3(9.960407e-08, 0.085749224, 0.4187463)
+bones/8/rotation = Quaternion(0.003939639, 1.1918951e-07, -4.5851045e-10, 0.99999225)
+bones/9/position = Vector3(0.26732144, 0.0764982, -0.028223984)
+bones/9/rotation = Quaternion(-0.50531465, -0.47724748, -0.50417954, 0.5125378)
+bones/10/position = Vector3(0.00943596, 0.223043, -8.3778796e-05)
+bones/10/rotation = Quaternion(-0.1479098, 0.71999156, -0.20830733, 0.6452464)
+bones/11/rotation = Quaternion(0.34220636, -0.075446665, 0.05820588, 0.93478054)
+bones/12/rotation = Quaternion(0.020934895, 0.017021658, -0.017671373, 0.9994797)
+bones/13/position = Vector3(-0.26732144, 0.0764982, -0.02822399)
+bones/13/rotation = Quaternion(-0.41645208, 0.38739848, 0.5797479, 0.58342314)
+bones/14/position = Vector3(-0.009435973, 0.223043, -8.366026e-05)
+bones/14/rotation = Quaternion(-0.13945262, -0.7219377, 0.20086335, 0.64731205)
+bones/15/rotation = Quaternion(0.242596, 0.081118815, -0.04999861, 0.96543616)
+bones/16/rotation = Quaternion(0.020934902, -0.017021645, 0.017671384, 0.9994797)
+bones/17/position = Vector3(0.276084, 0.06599521, -0.0034686895)
+bones/17/rotation = Quaternion(0.97635084, 0.021676285, -0.00011365257, -0.21510284)
+bones/18/rotation = Quaternion(0.15399034, 0.0073528904, 0.025931977, 0.9877047)
+bones/19/rotation = Quaternion(-0.6249052, 0.003437875, -0.0047340873, 0.78067875)
+bones/21/position = Vector3(-0.27608398, 0.06599527, -0.0034688246)
+bones/21/rotation = Quaternion(0.72323275, -0.0120091215, 0.018007493, 0.6902652)
+bones/22/rotation = Quaternion(0.8629361, -0.015788296, -0.009744414, 0.5049724)
+bones/23/rotation = Quaternion(-0.65533304, -0.0036310926, 0.0046103913, 0.75531733)
+bones/24/rotation = Quaternion(6.345563e-08, 0.9807643, -0.19519578, -1.8277876e-06)
+
+[node name="AnimationPlayer" parent="GodotBotPlanet/Node3D/Grob4/3DGodotRobot" parent_id_path=PackedInt32Array(249479794, 306271353) index="1" unique_id=863736044]
+autoplay = &"Run"
+
+[node name="Area3D" type="Area3D" parent="GodotBotPlanet/Node3D/Grob4" unique_id=1397333794]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="GodotBotPlanet/Node3D/Grob4/Area3D" unique_id=1857144826]
+shape = SubResource("SphereShape3D_ryguw")
+
+[node name="GB" parent="GodotBotPlanet/Node3D" unique_id=1898066695 instance=ExtResource("11_074og")]
+transform = Transform3D(-0.012103102, 0, 0.015922152, 0, 0.020000001, 0, -0.015922152, 0, -0.012103102, 0.6006094, 0, 0.58382136)
+script = ExtResource("13_0odxb")
+metadata/_edit_group_ = true
+
+[node name="Skeleton3D" parent="GodotBotPlanet/Node3D/GB/godot_plush_model/Rig" parent_id_path=PackedInt32Array(1898066695, 458721011, 154476934) index="0" unique_id=1405342878]
+bones/0/rotation = Quaternion(0.06972221, 0.031265277, -0.0021862814, 0.99707407)
+bones/1/rotation = Quaternion(-0.07813114, 0.111803174, 0.55021596, -0.823807)
+bones/2/rotation = Quaternion(0.2572329, 0.08473901, -0.022615345, 0.9623613)
+bones/4/rotation = Quaternion(-0.08034821, -0.19620594, 0.5374404, 0.81621397)
+bones/5/rotation = Quaternion(0.09728409, 0.08728188, -0.008598879, 0.99138486)
+bones/7/rotation = Quaternion(0.99707407, -0.0021862818, -0.031265277, -0.06972223)
+bones/8/rotation = Quaternion(-0.5050667, -0.014089486, -0.20848845, 0.8374018)
+bones/9/position = Vector3(-3.3308307e-08, 0.15368378, -1.2351457e-08)
+bones/9/rotation = Quaternion(0.2277405, -0.21039918, 0.050454147, 0.94937927)
+bones/10/position = Vector3(-3.4175958e-09, 0.20754741, -5.7180345e-09)
+bones/10/rotation = Quaternion(-0.4582506, -5.0523453e-05, 8.525081e-05, 0.8888231)
+bones/11/position = Vector3(-7.286375e-09, 0.25123602, -2.0337191e-08)
+bones/11/rotation = Quaternion(-0.000106262676, 0.9324278, -0.36135632, 4.765731e-05)
+bones/12/rotation = Quaternion(0.006273843, -0.0024156927, -0.033972632, 0.99940014)
+bones/13/position = Vector3(-1.6307187e-08, 0.15368378, -3.3035645e-09)
+bones/13/rotation = Quaternion(0.39072323, 0.1984121, -0.08666814, 0.89468247)
+bones/14/position = Vector3(1.8605126e-09, 0.20754749, -3.2998585e-08)
+bones/14/rotation = Quaternion(-0.4582507, 0.00016563239, -2.5947678e-05, 0.8888231)
+bones/15/position = Vector3(-5.6180607e-09, 0.25123596, -3.5406995e-08)
+bones/15/rotation = Quaternion(-1.8506069e-05, 0.93242776, -0.36135638, 0.00027428402)
+
+[node name="AnimationPlayer" parent="GodotBotPlanet/Node3D/GB/godot_plush_model" parent_id_path=PackedInt32Array(1898066695, 458721011) index="1" unique_id=1573530794]
+autoplay = &"fall"
+
+[node name="Area3D" type="Area3D" parent="GodotBotPlanet/Node3D/GB" unique_id=414124338]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="GodotBotPlanet/Node3D/GB/Area3D" unique_id=829405736]
+shape = SubResource("SphereShape3D_ryguw")
+
+[node name="AnimationTree" type="AnimationTree" parent="GodotBotPlanet/Node3D/GB" unique_id=1778292706]
+root_node = NodePath("../godot_plush_model")
+tree_root = SubResource("AnimationNodeBlendTree_kq58d")
+anim_player = NodePath("../godot_plush_model/AnimationPlayer")
+
+[node name="GB2" parent="GodotBotPlanet/Node3D" unique_id=1667620355 instance=ExtResource("11_074og")]
+transform = Transform3D(-0.009124762, -0.017397225, 0.0037516837, -0.016561352, 0.009843993, 0.005368194, -0.006516164, -0.000657473, -0.018897276, -0.6664765, 0, 0.48891568)
+script = ExtResource("13_0odxb")
+metadata/_edit_group_ = true
+
+[node name="Skeleton3D" parent="GodotBotPlanet/Node3D/GB2/godot_plush_model/Rig" parent_id_path=PackedInt32Array(1667620355, 458721011, 154476934) index="0" unique_id=1405342878]
+bones/0/position = Vector3(0, 0.77195513, 0)
+bones/0/rotation = Quaternion(-9.376889e-05, -0.04661351, 0.0020866182, 0.9989109)
+bones/1/rotation = Quaternion(-0.071567215, 0.15600556, 0.9247023, -0.33980322)
+bones/2/rotation = Quaternion(0.28595886, -0.027232176, 0.008127784, 0.9578205)
+bones/4/rotation = Quaternion(-0.122992985, -0.22212788, 0.9090182, 0.33048126)
+bones/5/rotation = Quaternion(0.112227306, -0.028239759, 0.0031928597, 0.9932761)
+bones/7/position = Vector3(0, 0.77195513, 0)
+bones/7/rotation = Quaternion(0.9989109, 0.0020866164, 0.046613514, 9.381254e-05)
+bones/8/rotation = Quaternion(-0.048653875, -0.0039420035, -0.05675204, 0.9971943)
+bones/9/position = Vector3(-2.3003711e-08, 0.1533384, 4.3176485e-10)
+bones/9/rotation = Quaternion(0.28208923, -0.19708708, 0.059311893, 0.937051)
+bones/10/position = Vector3(9.81211e-09, 0.207194, 2.4530418e-09)
+bones/10/rotation = Quaternion(-0.59437406, -0.056875948, 0.02358203, 0.8018283)
+bones/11/position = Vector3(-1.8974232e-08, 0.25121188, -1.34572575e-08)
+bones/11/rotation = Quaternion(-0.00010266324, 0.93244886, -0.36130205, 4.6266316e-05)
+bones/12/rotation = Quaternion(-0.12929322, 0.0061075357, 0.09324328, 0.9871938)
+bones/13/position = Vector3(-1.8198287e-08, 0.15239726, 6.2485834e-09)
+bones/13/rotation = Quaternion(0.33532056, 0.19015557, -0.06931868, 0.9201065)
+bones/14/position = Vector3(-1.859166e-08, 0.20603865, -2.1582249e-08)
+bones/14/rotation = Quaternion(-0.572595, -0.035560332, -0.039946347, 0.8180921)
+bones/15/position = Vector3(-4.381811e-08, 0.25120696, -3.54451e-08)
+bones/15/rotation = Quaternion(-2.7811215e-05, 0.9324604, -0.36127213, 0.00027790133)
+
+[node name="Area3D" type="Area3D" parent="GodotBotPlanet/Node3D/GB2" unique_id=253439630]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="GodotBotPlanet/Node3D/GB2/Area3D" unique_id=1826679995]
+shape = SubResource("SphereShape3D_ryguw")
+
+[node name="AnimationTree" type="AnimationTree" parent="GodotBotPlanet/Node3D/GB2" unique_id=1811568472]
+root_node = NodePath("../godot_plush_model")
+tree_root = SubResource("AnimationNodeBlendTree_a6jrf")
+anim_player = NodePath("../godot_plush_model/AnimationPlayer")
+
+[node name="GB3" parent="GodotBotPlanet/Node3D" unique_id=1635832667 instance=ExtResource("11_074og")]
+transform = Transform3D(-0.019926995, 0, 0.0017072933, -0.0002606911, 0.019765476, -0.0030427051, -0.0016872733, -0.0030538526, -0.019693324, 0.48192775, 0.003987106, -0.7831326)
+script = ExtResource("13_0odxb")
+metadata/_edit_group_ = true
+
+[node name="Skeleton3D" parent="GodotBotPlanet/Node3D/GB3/godot_plush_model/Rig" parent_id_path=PackedInt32Array(1635832667, 458721011, 154476934) index="0" unique_id=1405342878]
+bones/0/position = Vector3(0.0045335144, 0.8459022, 6.533867e-05)
+bones/0/rotation = Quaternion(0.0009373422, -0.04072718, -0.023758613, 0.9988874)
+bones/1/rotation = Quaternion(-0.12974097, 0.25755385, 0.8510275, -0.4388456)
+bones/2/rotation = Quaternion(0.3839865, 4.657225e-07, -1.1363482e-07, 0.9233388)
+bones/4/rotation = Quaternion(-0.17110285, -0.32714492, 0.82677555, 0.4244316)
+bones/5/rotation = Quaternion(0.13897538, -2.2283286e-08, -1.2993115e-07, 0.9902959)
+bones/7/position = Vector3(0.0036843624, 0.80142295, 0)
+bones/7/rotation = Quaternion(0.99912, -0.0099915005, 0.040736195, -0.0003838129)
+bones/8/rotation = Quaternion(0.54670805, 0.0025192904, 0.03927388, 0.836398)
+bones/9/position = Vector3(-1.0039901e-08, 0.19066557, -3.9731514e-08)
+bones/9/rotation = Quaternion(1.4250885e-06, -0.089107856, -1.620383e-05, 0.99602205)
+bones/10/position = Vector3(-2.070916e-08, 0.24454886, 1.4399473e-09)
+bones/10/rotation = Quaternion(-0.3415971, -0.023322413, 0.078601435, 0.9362635)
+bones/11/position = Vector3(2.7353977e-08, 0.2512972, 2.4622263e-08)
+bones/11/rotation = Quaternion(-9.2333896e-05, 0.9323885, -0.36145777, 4.2263364e-05)
+bones/12/rotation = Quaternion(-0.23793142, -0.0020331717, -0.028288223, 0.97086775)
+bones/13/position = Vector3(-8.8044665e-09, 0.17875677, -1.2693138e-08)
+bones/13/rotation = Quaternion(1.284872e-05, 0.08793493, -1.7529635e-05, 0.99612623)
+bones/14/position = Vector3(-7.3784423e-09, 0.23263884, -4.0394642e-08)
+bones/14/rotation = Quaternion(-0.22346272, -0.054536548, 0.029204912, 0.9727473)
+bones/15/position = Vector3(-1.898326e-09, 0.25129607, -2.8430785e-08)
+bones/15/rotation = Quaternion(6.1026617e-06, 0.93238884, -0.36145654, 0.0002647265)
+
+[node name="Area3D" type="Area3D" parent="GodotBotPlanet/Node3D/GB3" unique_id=380614579]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="GodotBotPlanet/Node3D/GB3/Area3D" unique_id=1808755567]
+shape = SubResource("SphereShape3D_ryguw")
+
+[node name="AnimationTree" type="AnimationTree" parent="GodotBotPlanet/Node3D/GB3" unique_id=1267833031]
+root_node = NodePath("../godot_plush_model")
+tree_root = SubResource("AnimationNodeBlendTree_qsp4k")
+anim_player = NodePath("../godot_plush_model/AnimationPlayer")
+
+[node name="GB4" parent="GodotBotPlanet/Node3D" unique_id=949826934 instance=ExtResource("11_074og")]
+transform = Transform3D(-0.017534368, 0, -0.00962008, 0, 0.020000001, 0, 0.00962008, 0, -0.017534368, -0.44562045, 0, -0.449057)
+script = ExtResource("13_0odxb")
+metadata/_edit_group_ = true
+
+[node name="Skeleton3D" parent="GodotBotPlanet/Node3D/GB4/godot_plush_model/Rig" parent_id_path=PackedInt32Array(949826934, 458721011, 154476934) index="0" unique_id=1405342878]
+bones/0/position = Vector3(-0.027762711, 0.68427616, -0.018046511)
+bones/0/rotation = Quaternion(0.12328784, -0.0896539, 0.080763206, 0.9850074)
+bones/1/rotation = Quaternion(-0.042208306, 0.06787774, 0.76986974, -0.63317597)
+bones/2/rotation = Quaternion(0.4041402, 0.024277005, -0.011025512, 0.91430837)
+bones/4/rotation = Quaternion(-0.069167964, -0.14858536, 0.76089126, 0.6278396)
+bones/5/rotation = Quaternion(0.11703008, 0.02650977, -0.0028537486, 0.99277043)
+bones/7/position = Vector3(-0.038403478, 0.7579818, 0)
+bones/7/rotation = Quaternion(0.9861883, 0.06481153, 0.08764604, -0.12470102)
+bones/8/rotation = Quaternion(-0.83776855, -0.011046671, -0.16368411, 0.5207969)
+bones/9/position = Vector3(-7.3407023e-09, 0.14763203, -9.282242e-08)
+bones/9/rotation = Quaternion(0.927344, -0.047831237, 0.1411845, 0.3432381)
+bones/10/position = Vector3(-1.1077804e-08, 0.19901386, 1.3534779e-08)
+bones/10/rotation = Quaternion(-0.14024435, -0.06988044, 0.057574496, 0.9859683)
+bones/11/position = Vector3(-8.460832e-09, 0.25128454, 2.6575393e-08)
+bones/11/rotation = Quaternion(-9.447779e-05, 0.9323842, -0.36146885, 4.307012e-05)
+bones/12/rotation = Quaternion(-0.04141569, 0.009962861, 0.15077865, 0.98764944)
+bones/13/position = Vector3(-2.4924661e-08, 0.15206863, -1.7591457e-08)
+bones/13/rotation = Quaternion(0.46574345, 0.03023338, -0.006801483, 0.88437706)
+bones/14/position = Vector3(1.312042e-08, 0.2056025, 7.84869e-08)
+bones/14/rotation = Quaternion(-0.72056985, -0.04930909, -0.096668966, 0.6848378)
+bones/15/position = Vector3(3.4537997e-08, 0.25128865, -1.7744516e-07)
+bones/15/rotation = Quaternion(4.283824e-06, 0.9323838, -0.3614699, 0.00026539937)
+
+[node name="Area3D" type="Area3D" parent="GodotBotPlanet/Node3D/GB4" unique_id=126546206]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="GodotBotPlanet/Node3D/GB4/Area3D" unique_id=1266598037]
+shape = SubResource("SphereShape3D_ryguw")
+
+[node name="AnimationTree" type="AnimationTree" parent="GodotBotPlanet/Node3D/GB4" unique_id=1711397496]
+root_node = NodePath("../godot_plush_model")
+tree_root = SubResource("AnimationNodeBlendTree_htxhm")
+anim_player = NodePath("../godot_plush_model/AnimationPlayer")
+
+[node name="Gorf" parent="GodotBotPlanet/Node3D" unique_id=1758051596 instance=ExtResource("12_ryguw")]
+transform = Transform3D(-0.019786974, 0, -0.002911299, 0, 0.020000001, 0, 0.002911299, 0, -0.019786974, -0.8429844, -0.015231304, 0.18896903)
+metadata/_edit_group_ = true
+
+[node name="Area3D" type="Area3D" parent="GodotBotPlanet/Node3D/Gorf" unique_id=75811995]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="GodotBotPlanet/Node3D/Gorf/Area3D" unique_id=1032390300]
+shape = SubResource("SphereShape3D_ryguw")
+
+[node name="Gorf2" parent="GodotBotPlanet/Node3D" unique_id=1246856074 instance=ExtResource("12_ryguw")]
+transform = Transform3D(-0.01846175, 0.004735898, -0.0060609435, 0.0045018555, 0.01943119, 0.0014704017, 0.0062367506, -6.964856e-06, -0.019002704, 0.7767392, -0.012886382, -0.39240038)
+metadata/_edit_group_ = true
+
+[node name="Area3D" type="Area3D" parent="GodotBotPlanet/Node3D/Gorf2" unique_id=818677599]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="GodotBotPlanet/Node3D/Gorf2/Area3D" unique_id=569770869]
+shape = SubResource("SphereShape3D_ryguw")
+
+[node name="Gorf3" parent="GodotBotPlanet/Node3D" unique_id=527495549 instance=ExtResource("12_ryguw")]
+transform = Transform3D(-0.018393788, -0.0041766698, 0.0066501126, -0.0010695123, 0.018111192, 0.0084167095, -0.007779761, 0.007385141, -0.016880019, -0.7875095, -0.012859205, -0.5480205)
+metadata/_edit_group_ = true
+
+[node name="Area3D" type="Area3D" parent="GodotBotPlanet/Node3D/Gorf3" unique_id=1289397196]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="GodotBotPlanet/Node3D/Gorf3/Area3D" unique_id=1354549757]
+shape = SubResource("SphereShape3D_ryguw")
+
+[node name="Gorf4" parent="GodotBotPlanet/Node3D" unique_id=42154710 instance=ExtResource("12_ryguw")]
+transform = Transform3D(0.010304954, 0, 0.017140832, 0, 0.020000007, 0, -0.017140832, 0, 0.010304954, 0.23896505, 0, 0.6166874)
+metadata/_edit_group_ = true
+
+[node name="Area3D" type="Area3D" parent="GodotBotPlanet/Node3D/Gorf4" unique_id=1055821034]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="GodotBotPlanet/Node3D/Gorf4/Area3D" unique_id=1852803979]
+shape = SubResource("SphereShape3D_ryguw")
+
+[node name="Golo" parent="GodotBotPlanet/Node3D" unique_id=1786129652 instance=ExtResource("13_d13ii")]
+transform = Transform3D(0.0031328269, 0, 0.019753112, -0.0031493027, 0.019744176, 0.0004994767, -0.019500444, -0.003188665, 0.003092754, 0.62305725, -0.012593529, 0.2569033)
+script = ExtResource("13_0odxb")
+metadata/_edit_group_ = true
+
+[node name="Area3D" type="Area3D" parent="GodotBotPlanet/Node3D/Golo" unique_id=600475283]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="GodotBotPlanet/Node3D/Golo/Area3D" unique_id=1667788495]
+shape = SubResource("SphereShape3D_ryguw")
+
+[node name="Golo2" parent="GodotBotPlanet/Node3D" unique_id=813009539 instance=ExtResource("13_d13ii")]
+transform = Transform3D(0.016053136, 0.003459996, -0.011416017, -0.0016762943, 0.019604605, 0.0035846208, 0.011810464, -0.0019203901, 0.016025765, -0.3444458, -0.010854323, 0.6311582)
+script = ExtResource("13_0odxb")
+metadata/_edit_group_ = true
+
+[node name="Area3D" type="Area3D" parent="GodotBotPlanet/Node3D/Golo2" unique_id=433324725]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="GodotBotPlanet/Node3D/Golo2/Area3D" unique_id=1585276258]
+shape = SubResource("SphereShape3D_ryguw")
+
+[node name="Golo3" parent="GodotBotPlanet/Node3D" unique_id=1293405588 instance=ExtResource("13_d13ii")]
+transform = Transform3D(-0.009533642, 0.016149307, -0.006950523, 0.013049473, 0.011798311, 0.009513749, 0.011782237, 0, -0.016161034, -0.33238292, 0.0011395548, -0.7956224)
+script = ExtResource("13_0odxb")
+metadata/_edit_group_ = true
+
+[node name="Area3D" type="Area3D" parent="GodotBotPlanet/Node3D/Golo3" unique_id=1503332453]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="GodotBotPlanet/Node3D/Golo3/Area3D" unique_id=427203848]
+shape = SubResource("SphereShape3D_ryguw")
+
+[node name="Golo4" parent="GodotBotPlanet/Node3D" unique_id=1549511298 instance=ExtResource("13_d13ii")]
+transform = Transform3D(-0.01931236, 0, 0.0051993025, 0, 0.020000001, 0, -0.0051993025, 0, -0.01931236, 0.45753637, -0.0058996165, -0.47275975)
+script = ExtResource("13_0odxb")
+metadata/_edit_group_ = true
+
+[node name="Area3D" type="Area3D" parent="GodotBotPlanet/Node3D/Golo4" unique_id=674969264]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="GodotBotPlanet/Node3D/Golo4/Area3D" unique_id=502933269]
+shape = SubResource("SphereShape3D_ryguw")
 
 [node name="WorldEnvironmentBGLayer" type="CanvasLayer" parent="." unique_id=1174235322]
 follow_viewport_scale = 1.574
@@ -186,6 +716,7 @@ scale = Vector2(1.24, 1.24)
 texture = ExtResource("10_w48qg")
 
 [node name="UI" type="CanvasLayer" parent="." unique_id=2100660002]
+script = ExtResource("18_82xsv")
 
 [node name="BG" type="Sprite2D" parent="UI" unique_id=1964503725]
 material = SubResource("CanvasItemMaterial_vivmo")
@@ -201,51 +732,156 @@ texture = ExtResource("15_vivmo")
 
 [node name="Golanda" type="Node2D" parent="UI" unique_id=26442665]
 position = Vector2(1015, 388)
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="UI/Golanda" unique_id=191289209]
+scale = Vector2(0.08, 0.08)
+texture = ExtResource("20_getpj")
 
 [node name="Grommbelle" type="Node2D" parent="UI" unique_id=315836730]
 position = Vector2(848, 329)
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="UI/Grommbelle" unique_id=681414162]
+scale = Vector2(0.08, 0.08)
+texture = ExtResource("20_getpj")
 
 [node name="Graevur" type="Node2D" parent="UI" unique_id=944702650]
 position = Vector2(843, 408)
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="UI/Graevur" unique_id=584746685]
+scale = Vector2(0.08, 0.08)
+texture = ExtResource("20_getpj")
 
 [node name="Groedon" type="Node2D" parent="UI" unique_id=938785588]
 position = Vector2(863, 378)
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="UI/Groedon" unique_id=2002778552]
+scale = Vector2(0.08, 0.08)
+texture = ExtResource("20_getpj")
 
 [node name="Golhod" type="Node2D" parent="UI" unique_id=548993305]
 position = Vector2(796, 387)
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="UI/Golhod" unique_id=1013143419]
+scale = Vector2(0.08, 0.08)
+texture = ExtResource("20_getpj")
 
 [node name="Gissen" type="Node2D" parent="UI" unique_id=1628612318]
 position = Vector2(995, 398)
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="UI/Gissen" unique_id=1221425179]
+scale = Vector2(0.08, 0.08)
+texture = ExtResource("20_getpj")
 
 [node name="Gehmbu" type="Node2D" parent="UI" unique_id=531605652]
 position = Vector2(841, 480)
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="UI/Gehmbu" unique_id=1891378197]
+scale = Vector2(0.08, 0.08)
+texture = ExtResource("20_getpj")
 
 [node name="Galaan" type="Node2D" parent="UI" unique_id=2054290016]
 position = Vector2(915, 488)
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="UI/Galaan" unique_id=1399234314]
+scale = Vector2(0.08, 0.08)
+texture = ExtResource("20_getpj")
 
 [node name="Garfu" type="Node2D" parent="UI" unique_id=1364788507]
 position = Vector2(949, 454)
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="UI/Garfu" unique_id=1225645286]
+scale = Vector2(0.08, 0.08)
+texture = ExtResource("20_getpj")
 
 [node name="Gabani" type="Node2D" parent="UI" unique_id=462643765]
 position = Vector2(954, 437)
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="UI/Gabani" unique_id=1038397182]
+scale = Vector2(0.08, 0.08)
+texture = ExtResource("20_getpj")
 
 [node name="Gavra" type="Node2D" parent="UI" unique_id=1608546304]
 position = Vector2(952, 431)
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="UI/Gavra" unique_id=244702792]
+scale = Vector2(0.08, 0.08)
+texture = ExtResource("20_getpj")
 
 [node name="Galorp" type="Node2D" parent="UI" unique_id=1957845019]
 position = Vector2(1033, 476)
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="UI/Galorp" unique_id=2121989665]
+scale = Vector2(0.08, 0.08)
+texture = ExtResource("20_getpj")
 
 [node name="Graina" type="Node2D" parent="UI" unique_id=238107314]
 position = Vector2(970, 522)
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="UI/Graina" unique_id=1948553029]
+scale = Vector2(0.08, 0.08)
+texture = ExtResource("20_getpj")
 
 [node name="Gilona" type="Node2D" parent="UI" unique_id=1352783909]
 position = Vector2(1033, 369)
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="UI/Gilona" unique_id=907296467]
+scale = Vector2(0.08, 0.08)
+texture = ExtResource("20_getpj")
 
 [node name="Grieven" type="Node2D" parent="UI" unique_id=1684659159]
 position = Vector2(999, 302)
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="UI/Grieven" unique_id=1810195035]
+scale = Vector2(0.08, 0.08)
+texture = ExtResource("20_getpj")
 
 [node name="Gofon" type="Node2D" parent="UI" unique_id=1279422295]
 position = Vector2(780, 444)
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="UI/Gofon" unique_id=848719516]
+scale = Vector2(0.08, 0.08)
+texture = ExtResource("20_getpj")
+
+[node name="Control" parent="UI" unique_id=637303894 instance=ExtResource("24_1u8w0")]
+offset_left = 60.0
+offset_top = 60.0
+offset_right = 100.0
+offset_bottom = 100.0
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=195495822]
 transform = Transform3D(1, 0, 0, 0, -0.92875135, 0.37070328, 0, -0.37070328, -0.92875135, 0, 0, 0)
+
+[editable path="WelcomeBot"]
+[editable path="WelcomeBot/godot_plush_model"]
+[editable path="GodotBotPlanet/Node3D/Grob"]
+[editable path="GodotBotPlanet/Node3D/Grob/3DGodotRobot"]
+[editable path="GodotBotPlanet/Node3D/Grob2"]
+[editable path="GodotBotPlanet/Node3D/Grob2/3DGodotRobot"]
+[editable path="GodotBotPlanet/Node3D/Grob3"]
+[editable path="GodotBotPlanet/Node3D/Grob3/3DGodotRobot"]
+[editable path="GodotBotPlanet/Node3D/Grob4"]
+[editable path="GodotBotPlanet/Node3D/Grob4/3DGodotRobot"]
+[editable path="GodotBotPlanet/Node3D/GB"]
+[editable path="GodotBotPlanet/Node3D/GB/godot_plush_model"]
+[editable path="GodotBotPlanet/Node3D/GB2"]
+[editable path="GodotBotPlanet/Node3D/GB2/godot_plush_model"]
+[editable path="GodotBotPlanet/Node3D/GB3"]
+[editable path="GodotBotPlanet/Node3D/GB3/godot_plush_model"]
+[editable path="GodotBotPlanet/Node3D/GB4"]
+[editable path="GodotBotPlanet/Node3D/GB4/godot_plush_model"]

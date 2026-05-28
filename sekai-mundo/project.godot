@@ -23,6 +23,7 @@ enabled=PackedStringArray("res://addons/anthonyec.camera_preview/plugin.cfg")
 
 folder_colors={
 "res://assets/": "blue",
+"res://assets/audio/": "green",
 "res://assets/sprites/": "orange",
 "res://characters/": "teal",
 "res://maty/": "green"
@@ -31,6 +32,11 @@ folder_colors={
 [filesystem]
 
 import/blender/enabled=false
+
+[layer_names]
+
+2d_physics/layer_1="Bots"
+2d_physics/layer_2="Player"
 
 [physics]
 

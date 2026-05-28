@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://b0wqk1pgbrueu"
+path="res://.godot/imported/wind_high.wav-2cf23eb05f6f186576fc2fd35db639ff.sample"
+
+[deps]
+
+source_file="res://assets/audio/bc wav files/wind_high.wav"
+dest_files=["res://.godot/imported/wind_high.wav-2cf23eb05f6f186576fc2fd35db639ff.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

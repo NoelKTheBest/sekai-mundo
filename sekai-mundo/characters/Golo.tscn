@@ -7,10 +7,56 @@
 
 [node name="GodotRobot3rdPersonShooterFinal" parent="." unique_id=1523663380 instance=ExtResource("1_58cg7")]
 
-[node name="Rifle" parent="GodotRobot3rdPersonShooterFinal/RobotArmature/Skeleton3D/hand_R" parent_id_path=PackedInt32Array(1523663380, 135197672) index="0" unique_id=1309599644]
+[node name="Skeleton3D" parent="GodotRobot3rdPersonShooterFinal/RobotArmature" parent_id_path=PackedInt32Array(1523663380, 1340625694) index="0" unique_id=750945510]
+bones/0/position = Vector3(6.935804e-16, 2.5607593, 0.03231751)
+bones/0/rotation = Quaternion(0.009620612, 1.19203754e-07, 1.1468702e-09, 0.9999538)
+bones/1/rotation = Quaternion(0.03971422, 1.4890866e-14, 9.468605e-09, 0.99921113)
+bones/3/rotation = Quaternion(0.015082413, 1.19195754e-07, -1.7979629e-09, 0.99988633)
+bones/4/position = Vector3(5.3065513e-16, 0.2416633, -0.011521787)
+bones/4/rotation = Quaternion(0.03782729, -1.19124024e-07, -4.509366e-09, 0.9992843)
+bones/5/rotation = Quaternion(-0.017326169, 4.6935546e-14, 4.1308796e-09, 0.9998499)
+bones/6/rotation = Quaternion(0.0028155053, 1.1920884e-07, -3.3563433e-10, 0.9999961)
+bones/7/position = Vector3(9.293679e-08, 0.53701174, 0.38980514)
+bones/7/rotation = Quaternion(0.0028154997, 1.1920884e-07, -3.3563377e-10, 0.9999961)
+bones/8/position = Vector3(9.740859e-08, 0.012805304, 0.40856126)
+bones/8/rotation = Quaternion(0.0028155, 1.1920884e-07, -3.356338e-10, 0.9999961)
+bones/9/position = Vector3(0.38452598, 0.24637778, -0.026832)
+bones/9/rotation = Quaternion(-0.48169905, -0.4189212, -0.5628577, 0.52503556)
+bones/10/rotation = Quaternion(-0.33945566, 0.62798905, -0.41183603, 0.5663839)
+bones/11/rotation = Quaternion(0.28323603, -0.084362246, 0.036913898, 0.9546192)
+bones/12/rotation = Quaternion(0.026751243, 0.017076295, -0.008903197, 0.99945664)
+bones/13/position = Vector3(-0.38452595, 0.24637778, -0.026831998)
+bones/13/rotation = Quaternion(-0.46756774, 0.4014167, 0.574413, 0.53879017)
+bones/14/rotation = Quaternion(-0.33620435, -0.62982416, 0.41038287, 0.5673395)
+bones/15/rotation = Quaternion(0.30570725, 0.08350385, -0.03878811, 0.94766337)
+bones/16/rotation = Quaternion(0.025691662, -0.017087078, 0.008822182, 0.99948496)
+bones/17/position = Vector3(0.23944092, -0.078797564, 0.051202964)
+bones/17/rotation = Quaternion(0.99257284, 0.051930316, -0.059483938, 0.09254291)
+bones/17/scale = Vector3(0.9999997, 1, 0.99990237)
+bones/18/rotation = Quaternion(0.28841624, 0.0032778177, -0.0042975303, 0.95748997)
+bones/19/rotation = Quaternion(-0.76323587, -0.09488912, 0.021489596, 0.6387529)
+bones/19/scale = Vector3(1, 1.0000001, 0.99999994)
+bones/20/rotation = Quaternion(-1.7954217e-07, 0.98945, -0.14487556, 2.3152704e-06)
+bones/20/scale = Vector3(1.0000001, 1.0000002, 1)
+bones/21/position = Vector3(-0.23944093, -0.078797325, 0.05120285)
+bones/21/rotation = Quaternion(0.9841502, -0.048404798, 0.040587816, 0.16570523)
+bones/21/scale = Vector3(0.99999976, 0.9999999, 0.9999022)
+bones/22/rotation = Quaternion(0.32950085, -0.003961806, 0.0054252762, 0.9441315)
+bones/23/rotation = Quaternion(-0.7549933, 0.022345386, -0.036792435, 0.65431803)
+bones/23/scale = Vector3(1, 0.99999994, 0.9999998)
+bones/24/rotation = Quaternion(1.6974643e-07, 0.98945, -0.14487556, -2.3162181e-06)
+bones/24/scale = Vector3(1, 1.0000002, 1)
+
+[node name="hand_R" parent="GodotRobot3rdPersonShooterFinal/RobotArmature/Skeleton3D" index="0" unique_id=135197672]
+transform = Transform3D(-0.9294059, -0.29813263, 0.21753469, 0.36030868, -0.86058193, 0.35996747, 0.07988846, 0.41293514, 0.9072494, -1.0140487, 2.468617, 0.16977537)
+
+[node name="Rifle" parent="GodotRobot3rdPersonShooterFinal/RobotArmature/Skeleton3D/hand_R" index="0" unique_id=1309599644]
 visible = false
 
-[node name="Chest" parent="GodotRobot3rdPersonShooterFinal/RobotArmature/Skeleton3D" parent_id_path=PackedInt32Array(1523663380, 750945510) index="2" unique_id=1835234861]
+[node name="Chest" parent="GodotRobot3rdPersonShooterFinal/RobotArmature/Skeleton3D" index="2" unique_id=1835234861]
 material_override = ExtResource("2_kofam")
+
+[node name="AnimationPlayer" parent="GodotRobot3rdPersonShooterFinal" index="1" unique_id=1451134576]
+autoplay = &"IdleNoGun"
 
 [editable path="GodotRobot3rdPersonShooterFinal"]
