@@ -2,6 +2,24 @@ extends CanvasLayer
 
 @export var green = Color.LIME_GREEN
 @export var blue = Color.DODGER_BLUE 
+var territory_names = [
+	"Golanda",
+	"Grombelle",
+	"Graevur",
+	"Groedon",
+	"Golhod",
+	"Gissen",
+	"Gehmbu",
+	"Galaan",
+	"Garfu",
+	"Gabani",
+	"Gavra",
+	"Galorp",
+	"Graina",
+	"Gilona",
+	"Grieven",
+	"Gofon"
+]
 var affiliation_list
 var affiliation_strength
 var questionlistfilepath = "res://SatelliteBotQuestions.txt"
@@ -53,6 +71,7 @@ func _ready() -> void:
 	territories.pop_front()
 	territories.pop_front()
 	territories.pop_back()
+	territories.pop_back()
 	array_sizes.append(territories.size())
 	
 	# Set all questions for each bot
@@ -84,6 +103,48 @@ func set_affiliation():
 		i += 1
 
 
+func change_affiliation():
+	var i = 0
+	
+	for a in affiliation_strength:
+		affiliation_list[i] = blue if a >= 0 else green
+		i += 1
+	
+	$"../Player/sfx".play()
+
+
 func type_is_node_2D(child):
 	print(type_string(typeof(child)))
 	return typeof(child) == typeof(Node2D) and typeof(child) != typeof(Sprite2D)
+
+
+func _on_player_player_made_a_choice(chose_yes: bool, transmission: String) -> void:
+	var current_bot_id
+	current_bot_id = questions.find(transmission)
+	
+	print(affiliation_strength)
+	print_rich("[color=orangered]---------------------------------------------")
+	
+	# Get list of dictionaries using the bot ID and then iterate through list
+	for territory in political_map[territory_names[current_bot_id]]:
+		var key = territory.keys()[0]
+		var amount = territory[key]
+		print(key)
+		print(amount)
+		
+		if affiliation_list[current_bot_id] == blue and amount > 0 and chose_yes:
+			var tid = territory_names.find(key)
+			print_rich("[color=yellow]" + str(tid))
+			affiliation_strength[tid] += amount # if chose_yes else -amount
+			print(affiliation_strength[tid])
+		elif affiliation_list[current_bot_id] == green and amount < 0 and chose_yes:
+			var tid = territory_names.find(key)
+			print_rich("[color=yellow]" + str(tid))
+			affiliation_strength[tid] += amount # if chose_yes else -amount
+			print(affiliation_strength[tid])
+	
+	print(affiliation_strength)
+	print_rich("[color=limegreen]---------------------------------------------")
+	
+	change_affiliation()
+	set_affiliation()

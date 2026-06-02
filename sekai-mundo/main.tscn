@@ -9,7 +9,10 @@
 [ext_resource type="AudioStream" uid="uid://d1op85o67bl23" path="res://assets/audio/sekai_mundo_songs/Bleeping Demo.mp3" id="5_d13ii"]
 [ext_resource type="PackedScene" uid="uid://dbcdlkiim1uat" path="res://satellite.tscn" id="6_7mycd"]
 [ext_resource type="Script" uid="uid://bscwbegfypjhg" path="res://planet.gd" id="7_272bh"]
+[ext_resource type="AudioStream" uid="uid://csn8go2kvah8m" path="res://assets/audio/bc wav files/ting1.wav" id="7_a6jrf"]
+[ext_resource type="AudioStream" uid="uid://dyqte7slvgllw" path="res://assets/audio/sekai_mundo_songs/Level Up.mp3" id="7_qsp4k"]
 [ext_resource type="PackedScene" uid="uid://brcn8a5ee2o43" path="res://orbit.tscn" id="8_5vw27"]
+[ext_resource type="AudioStream" uid="uid://cvtl8rrxua887" path="res://assets/audio/sekai_mundo_songs/The Complex.mp3" id="8_kq58d"]
 [ext_resource type="Texture2D" uid="uid://b8ghlejaxmqq6" path="res://assets/sprites/download (3).png" id="9_kek77"]
 [ext_resource type="Script" uid="uid://b7uukd7wk3tca" path="res://satellite.gd" id="9_yaehf"]
 [ext_resource type="PackedScene" uid="uid://b720xx4l3qwtx" path="res://characters/Grob.tscn" id="10_074og"]
@@ -26,6 +29,13 @@
 [ext_resource type="Script" uid="uid://bgu8q8g6l57bl" path="res://ui.gd" id="18_82xsv"]
 [ext_resource type="Texture2D" uid="uid://cm2e5wq7mfawo" path="res://icon.svg" id="20_getpj"]
 [ext_resource type="PackedScene" uid="uid://d2h1h2lm577ua" path="res://TransmissionScreen.tscn" id="24_1u8w0"]
+[ext_resource type="Script" uid="uid://ctymjwa5kbwo1" path="res://label.gd" id="29_kq58d"]
+
+[sub_resource type="Environment" id="Environment_5vw27"]
+background_mode = 3
+background_canvas_max_layer = 1
+ambient_light_source = 3
+ambient_light_color = Color(0.21, 0.21, 0.21, 1)
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_ryguw"]
 radius = 6.940539
@@ -38,13 +48,20 @@ nodes/Animation/node = SubResource("AnimationNodeAnimation_a6jrf")
 nodes/Animation/position = Vector2(132, 152.90001)
 node_connections = [&"output", 0, &"Animation"]
 
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_1u8w0"]
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_vivmo"]
+blend_mode = 3
+particles_animation = true
+particles_anim_h_frames = 1
+particles_anim_v_frames = 1
+particles_anim_loop = false
 
-[sub_resource type="Environment" id="Environment_5vw27"]
-background_mode = 3
-background_canvas_max_layer = 1
-ambient_light_source = 3
-ambient_light_color = Color(0.21, 0.21, 0.21, 1)
+[sub_resource type="AudioStreamPlaylist" id="AudioStreamPlaylist_seu75"]
+stream_count = 3
+stream_0 = ExtResource("5_d13ii")
+stream_1 = ExtResource("7_qsp4k")
+stream_2 = ExtResource("8_kq58d")
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_1u8w0"]
 
 [sub_resource type="Animation" id="Animation_5vw27"]
 length = 0.001
@@ -83,6 +100,9 @@ _data = {
 &"RESET": SubResource("Animation_5vw27"),
 &"orbit": SubResource("Animation_kek77")
 }
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lswn8"]
+albedo_color = Color(0.30980393, 1, 0.5058824, 1)
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_0odxb"]
 animation = &"Dive"
@@ -132,45 +152,41 @@ nodes/Animation/node = SubResource("AnimationNodeAnimation_seu75")
 nodes/Animation/position = Vector2(88, 155.1)
 node_connections = [&"output", 0, &"Animation"]
 
-[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_vivmo"]
-blend_mode = 3
-particles_animation = true
-particles_anim_h_frames = 1
-particles_anim_v_frames = 1
-particles_anim_loop = false
-
 [node name="Node3D" type="Node3D" unique_id=33642771]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1671193945]
+environment = SubResource("Environment_5vw27")
 
 [node name="WelcomeBot" parent="." unique_id=1757613948 instance=ExtResource("11_074og")]
 transform = Transform3D(-0.99998564, 0, -0.005358106, -0.0015509906, 0.95718825, 0.28946203, 0.005128716, 0.2894662, -0.9571745, 0, 1.096061, -145.70113)
 script = ExtResource("2_lswn8")
 rotation_speed = 0.0
 
-[node name="Skeleton3D" parent="WelcomeBot/godot_plush_model/Rig" parent_id_path=PackedInt32Array(1757613948, 458721011, 154476934) index="0" unique_id=1405342878]
-bones/0/position = Vector3(-0.009644307, 0.7862793, 0)
-bones/0/rotation = Quaternion(2.1855424e-08, 1.10849524e-10, 0.005071884, 0.9999871)
-bones/1/rotation = Quaternion(0.021900794, -0.036847852, 0.88838273, -0.4570982)
-bones/2/rotation = Quaternion(0.06512782, -0.704101, 0.06512783, 0.7041012)
-bones/4/rotation = Quaternion(-0.027935771, -0.048577517, 0.8878185, 0.4567691)
+[node name="Skeleton3D" parent="WelcomeBot/godot_plush_model/Rig" parent_id_path=PackedInt32Array(1757613948, 458721011, 1071284328) index="0" unique_id=268352740]
+bones/0/position = Vector3(-0.13388886, 0.79637825, 0)
+bones/0/rotation = Quaternion(2.1243345e-08, 5.1373092e-09, 0.23505588, 0.9719819)
+bones/1/rotation = Quaternion(0.0051180082, -0.04255831, 0.6274518, -0.77747476)
+bones/2/rotation = Quaternion(0.026379324, -0.7066145, 0.026379317, 0.7066146)
+bones/4/rotation = Quaternion(-0.19515753, -0.37401247, 0.8066575, 0.4139226)
 bones/5/rotation = Quaternion(0.09210466, -2.0888399e-07, -1.168479e-07, 0.9957494)
-bones/7/position = Vector3(-0.009644307, 0.7862793, 0)
-bones/7/rotation = Quaternion(0.9999871, 0.005071884, 1.10849524e-10, 2.1855424e-08)
-bones/8/rotation = Quaternion(-0.019004785, -0.0004691013, -0.004912337, 0.99980724)
-bones/9/position = Vector3(-3.1135386e-08, 0.1532221, 1.08025855e-08)
-bones/9/rotation = Quaternion(0.16613807, 0.0009982232, -0.00023090722, 0.9861019)
-bones/10/position = Vector3(8.022176e-09, 0.20707548, 1.563621e-08)
-bones/10/rotation = Quaternion(-0.5197596, -0.21158674, -0.04777942, 0.826316)
+bones/7/position = Vector3(-0.13388886, 0.79637825, 0)
+bones/7/rotation = Quaternion(0.9719819, 0.23505588, 5.1373092e-09, 2.1243345e-08)
+bones/8/rotation = Quaternion(0.05570027, 0.013130734, 0.19803129, 0.97852373)
+bones/9/position = Vector3(-5.443961e-10, 0.21157674, -1.8318651e-08)
+bones/9/rotation = Quaternion(1.3140692e-07, -0.014744592, -1.6310489e-05, 0.9998914)
+bones/10/position = Vector3(5.0366635e-09, 0.2654604, 1.7740536e-08)
+bones/10/rotation = Quaternion(-0.43748564, -0.20429455, -0.03569375, 0.8749835)
 bones/11/position = Vector3(1.584344e-08, 0.25127903, -2.4805324e-08)
 bones/11/rotation = Quaternion(-0.00011452154, 0.9323838, -0.36146998, 5.084109e-05)
-bones/12/rotation = Quaternion(-0.040463455, -0.00047298628, -0.004968656, 0.9991686)
-bones/13/position = Vector3(6.518901e-09, 0.15279645, -8.172201e-09)
-bones/13/rotation = Quaternion(0.20395762, 0.0011536595, -0.00033573125, 0.97897905)
-bones/14/position = Vector3(-1.4494944e-08, 0.20664597, 2.5279366e-08)
-bones/14/rotation = Quaternion(-0.5374618, 0.20714629, 0.063262396, 0.8149989)
+bones/12/rotation = Quaternion(-0.22140032, 0.013924052, 0.20985681, 0.95223325)
+bones/13/position = Vector3(4.5961475e-09, 0.15089543, 2.1456477e-08)
+bones/13/rotation = Quaternion(0.49546105, -0.07966006, 0.04568642, 0.8637623)
+bones/14/position = Vector3(-1.3027465e-08, 0.20435452, -1.8736943e-08)
+bones/14/rotation = Quaternion(-0.640825, 0.23870932, 0.02137116, 0.7293179)
 bones/15/position = Vector3(1.6880678e-08, 0.25127897, -2.6835433e-08)
 bones/15/rotation = Quaternion(-1.0226061e-05, 0.9323838, -0.36146995, 0.0002710521)
 
-[node name="AnimationPlayer" parent="WelcomeBot/godot_plush_model" parent_id_path=PackedInt32Array(1757613948, 458721011) index="1" unique_id=1573530794]
+[node name="AnimationPlayer" parent="WelcomeBot/godot_plush_model" parent_id_path=PackedInt32Array(1757613948, 458721011) index="1" unique_id=1476407243]
 autoplay = &"wave"
 
 [node name="Area3D" type="Area3D" parent="WelcomeBot" unique_id=1527272782]
@@ -193,6 +209,341 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.2853093, 0, 0)
 visible = false
 texture = ExtResource("3_7mycd")
 
+[node name="WorldEnvironmentBGLayer" type="CanvasLayer" parent="." unique_id=1174235322]
+follow_viewport_scale = 1.574
+
+[node name="BG" type="Sprite2D" parent="WorldEnvironmentBGLayer" unique_id=1505206425]
+texture_filter = 1
+texture_repeat = 2
+position = Vector2(415, 167)
+texture = ExtResource("1_1bvp3")
+offset = Vector2(160, 160)
+region_enabled = true
+region_rect = Rect2(0, 0, 51200, 5120)
+metadata/_edit_lock_ = true
+
+[node name="Sprite2D2" type="Sprite2D" parent="WorldEnvironmentBGLayer" unique_id=319777683]
+position = Vector2(312, 255)
+texture = ExtResource("9_kek77")
+
+[node name="Download(5)" type="Sprite2D" parent="WorldEnvironmentBGLayer" unique_id=1804432997]
+position = Vector2(1855, 551)
+scale = Vector2(0.38, 0.38)
+texture = ExtResource("10_w48qg")
+
+[node name="Download(6)" type="Sprite2D" parent="WorldEnvironmentBGLayer" unique_id=1310974427]
+position = Vector2(-1618, 127)
+scale = Vector2(0.43, 0.43)
+texture = ExtResource("11_vivmo")
+
+[node name="Download(7)" type="Sprite2D" parent="WorldEnvironmentBGLayer" unique_id=1290959958]
+position = Vector2(-736, 542)
+texture = ExtResource("12_2cqfq")
+
+[node name="Download(8)" type="Sprite2D" parent="WorldEnvironmentBGLayer" unique_id=596651971]
+position = Vector2(-2860, 450)
+texture = ExtResource("13_yaehf")
+
+[node name="Download(10)" type="Sprite2D" parent="WorldEnvironmentBGLayer" unique_id=420325378]
+position = Vector2(3419, 119)
+scale = Vector2(0.38, 0.38)
+texture = ExtResource("14_074og")
+
+[node name="Download(6)2" type="Sprite2D" parent="WorldEnvironmentBGLayer" unique_id=283839178]
+position = Vector2(-4826, 368)
+texture = ExtResource("11_vivmo")
+
+[node name="Download(8)2" type="Sprite2D" parent="WorldEnvironmentBGLayer" unique_id=1533830230]
+position = Vector2(4167, 398)
+scale = Vector2(1.55, 1.55)
+texture = ExtResource("13_yaehf")
+
+[node name="Download(5)2" type="Sprite2D" parent="WorldEnvironmentBGLayer" unique_id=1019604574]
+self_modulate = Color(0.42000002, 0.8743333, 1, 1)
+position = Vector2(2437, 159)
+rotation = 2.417281
+scale = Vector2(1.24, 1.24)
+texture = ExtResource("10_w48qg")
+
+[node name="UI" type="CanvasLayer" parent="." unique_id=2100660002]
+offset = Vector2(-19, 0)
+transform = Transform2D(1, 0, 0, 1, -19, 0)
+script = ExtResource("18_82xsv")
+
+[node name="BG" type="Sprite2D" parent="UI" unique_id=1964503725]
+material = SubResource("CanvasItemMaterial_vivmo")
+position = Vector2(916.99994, 420.99994)
+scale = Vector2(0.085, 0.085)
+texture = ExtResource("15_vivmo")
+
+[node name="Sprite2D" type="Sprite2D" parent="UI" unique_id=1252486079]
+texture_filter = 3
+position = Vector2(916.99994, 420.99994)
+scale = Vector2(0.07, 0.07)
+texture = ExtResource("15_vivmo")
+
+[node name="Golanda" type="Node2D" parent="UI" unique_id=26442665]
+position = Vector2(1015, 388)
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="UI/Golanda" unique_id=191289209]
+scale = Vector2(0.08, 0.08)
+texture = ExtResource("20_getpj")
+
+[node name="Label" type="Label" parent="UI/Golanda" unique_id=71051830]
+offset_top = -5.0
+offset_right = 65.0
+offset_bottom = 18.0
+text = "Golanda"
+script = ExtResource("29_kq58d")
+
+[node name="Grommbelle" type="Node2D" parent="UI" unique_id=315836730]
+position = Vector2(848, 329)
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="UI/Grommbelle" unique_id=681414162]
+scale = Vector2(0.08, 0.08)
+texture = ExtResource("20_getpj")
+
+[node name="Label" type="Label" parent="UI/Grommbelle" unique_id=1774062545]
+offset_top = -5.0
+offset_right = 81.0
+offset_bottom = 18.0
+text = "Grombelle"
+script = ExtResource("29_kq58d")
+
+[node name="Graevur" type="Node2D" parent="UI" unique_id=944702650]
+position = Vector2(843, 408)
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="UI/Graevur" unique_id=584746685]
+scale = Vector2(0.08, 0.08)
+texture = ExtResource("20_getpj")
+
+[node name="Label" type="Label" parent="UI/Graevur" unique_id=695824225]
+offset_top = -5.0
+offset_right = 63.0
+offset_bottom = 18.0
+text = "Graevur"
+script = ExtResource("29_kq58d")
+
+[node name="Groedon" type="Node2D" parent="UI" unique_id=938785588]
+position = Vector2(863, 378)
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="UI/Groedon" unique_id=2002778552]
+scale = Vector2(0.08, 0.08)
+texture = ExtResource("20_getpj")
+
+[node name="Label" type="Label" parent="UI/Groedon" unique_id=927551387]
+offset_top = -5.0
+offset_right = 68.0
+offset_bottom = 18.0
+text = "Groedon"
+script = ExtResource("29_kq58d")
+
+[node name="Golhod" type="Node2D" parent="UI" unique_id=548993305]
+position = Vector2(796, 387)
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="UI/Golhod" unique_id=1013143419]
+scale = Vector2(0.08, 0.08)
+texture = ExtResource("20_getpj")
+
+[node name="Label" type="Label" parent="UI/Golhod" unique_id=189126466]
+offset_top = -5.0
+offset_right = 56.0
+offset_bottom = 18.0
+text = "Golhod"
+script = ExtResource("29_kq58d")
+
+[node name="Gissen" type="Node2D" parent="UI" unique_id=1628612318]
+position = Vector2(995, 398)
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="UI/Gissen" unique_id=1221425179]
+scale = Vector2(0.08, 0.08)
+texture = ExtResource("20_getpj")
+
+[node name="Label" type="Label" parent="UI/Gissen" unique_id=1069464658]
+offset_top = -5.0
+offset_right = 52.0
+offset_bottom = 18.0
+text = "Gissen"
+script = ExtResource("29_kq58d")
+
+[node name="Gehmbu" type="Node2D" parent="UI" unique_id=531605652]
+position = Vector2(841, 480)
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="UI/Gehmbu" unique_id=1891378197]
+scale = Vector2(0.08, 0.08)
+texture = ExtResource("20_getpj")
+
+[node name="Label" type="Label" parent="UI/Gehmbu" unique_id=742346881]
+offset_top = -5.0
+offset_right = 67.0
+offset_bottom = 18.0
+text = "Gehmbu"
+script = ExtResource("29_kq58d")
+
+[node name="Galaan" type="Node2D" parent="UI" unique_id=2054290016]
+position = Vector2(915, 488)
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="UI/Galaan" unique_id=1399234314]
+scale = Vector2(0.08, 0.08)
+texture = ExtResource("20_getpj")
+
+[node name="Label" type="Label" parent="UI/Galaan" unique_id=84491511]
+offset_top = -5.0
+offset_right = 55.0
+offset_bottom = 18.0
+text = "Galaan"
+script = ExtResource("29_kq58d")
+
+[node name="Garfu" type="Node2D" parent="UI" unique_id=1364788507]
+position = Vector2(949, 454)
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="UI/Garfu" unique_id=1225645286]
+scale = Vector2(0.08, 0.08)
+texture = ExtResource("20_getpj")
+
+[node name="Label" type="Label" parent="UI/Garfu" unique_id=2135078251]
+offset_top = -5.0
+offset_right = 44.0
+offset_bottom = 18.0
+text = "Garfu"
+script = ExtResource("29_kq58d")
+
+[node name="Gabani" type="Node2D" parent="UI" unique_id=462643765]
+position = Vector2(954, 437)
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="UI/Gabani" unique_id=1038397182]
+scale = Vector2(0.08, 0.08)
+texture = ExtResource("20_getpj")
+
+[node name="Label" type="Label" parent="UI/Gabani" unique_id=1167406393]
+offset_top = -5.0
+offset_right = 55.0
+offset_bottom = 18.0
+text = "Gabani"
+script = ExtResource("29_kq58d")
+
+[node name="Gavra" type="Node2D" parent="UI" unique_id=1608546304]
+position = Vector2(952, 431)
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="UI/Gavra" unique_id=244702792]
+scale = Vector2(0.08, 0.08)
+texture = ExtResource("20_getpj")
+
+[node name="Label" type="Label" parent="UI/Gavra" unique_id=1448226648]
+offset_top = -14.0
+offset_right = 46.0
+offset_bottom = 9.0
+text = "Gavra"
+script = ExtResource("29_kq58d")
+
+[node name="Galorp" type="Node2D" parent="UI" unique_id=1957845019]
+position = Vector2(1033, 476)
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="UI/Galorp" unique_id=2121989665]
+scale = Vector2(0.08, 0.08)
+texture = ExtResource("20_getpj")
+
+[node name="Label" type="Label" parent="UI/Galorp" unique_id=2009868791]
+offset_top = -5.0
+offset_right = 52.0
+offset_bottom = 18.0
+text = "Galorp"
+script = ExtResource("29_kq58d")
+
+[node name="Graina" type="Node2D" parent="UI" unique_id=238107314]
+position = Vector2(970, 522)
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="UI/Graina" unique_id=1948553029]
+scale = Vector2(0.08, 0.08)
+texture = ExtResource("20_getpj")
+
+[node name="Label" type="Label" parent="UI/Graina" unique_id=342032135]
+offset_top = -5.0
+offset_right = 52.0
+offset_bottom = 18.0
+text = "Graina"
+script = ExtResource("29_kq58d")
+
+[node name="Gilona" type="Node2D" parent="UI" unique_id=1352783909]
+position = Vector2(1033, 369)
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="UI/Gilona" unique_id=907296467]
+scale = Vector2(0.08, 0.08)
+texture = ExtResource("20_getpj")
+
+[node name="Label" type="Label" parent="UI/Gilona" unique_id=32316308]
+offset_top = -5.0
+offset_right = 50.0
+offset_bottom = 18.0
+text = "Gilona"
+script = ExtResource("29_kq58d")
+
+[node name="Grieven" type="Node2D" parent="UI" unique_id=1684659159]
+position = Vector2(999, 302)
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="UI/Grieven" unique_id=1810195035]
+scale = Vector2(0.08, 0.08)
+texture = ExtResource("20_getpj")
+
+[node name="Label" type="Label" parent="UI/Grieven" unique_id=751393181]
+offset_top = -5.0
+offset_right = 61.0
+offset_bottom = 18.0
+text = "Grieven"
+script = ExtResource("29_kq58d")
+
+[node name="Gofon" type="Node2D" parent="UI" unique_id=1279422295]
+position = Vector2(780, 444)
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="UI/Gofon" unique_id=848719516]
+scale = Vector2(0.08, 0.08)
+texture = ExtResource("20_getpj")
+
+[node name="Label" type="Label" parent="UI/Gofon" unique_id=1245964011]
+offset_top = -5.0
+offset_right = 48.0
+offset_bottom = 18.0
+text = "Gofon"
+script = ExtResource("29_kq58d")
+
+[node name="Control" parent="UI" unique_id=637303894 instance=ExtResource("24_1u8w0")]
+offset_left = 60.0
+offset_top = 60.0
+offset_right = 100.0
+offset_bottom = 100.0
+
+[node name="Label2" type="Label" parent="UI/Control" unique_id=328712411]
+visible = false
+layout_mode = 0
+offset_left = 8.0
+offset_top = 398.0
+offset_right = 223.0
+offset_bottom = 439.0
+text = "Press Enter To continue"
+
+[node name="Label" type="Label" parent="UI" unique_id=773885156]
+offset_left = 29.0
+offset_top = 5.0
+offset_right = 143.0
+offset_bottom = 28.0
+text = "Press Q to quit"
+
 [node name="Player" type="Camera3D" parent="." unique_id=1181995338]
 transform = Transform3D(-0.9998986, 0.001327115, -0.014179394, -0.00040062363, 0.9926334, 0.121156216, 0.0142357275, 0.12114961, -0.9925322, 0, 3.2636561, -160.24553)
 keep_aspect = 0
@@ -202,8 +553,9 @@ rotation_speed = 1.0
 canvas_bg_speed = 12
 
 [node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="Player" unique_id=305833683]
-stream = ExtResource("5_d13ii")
+stream = SubResource("AudioStreamPlaylist_seu75")
 volume_db = 10.079
+autoplay = true
 
 [node name="Area3D" type="Area3D" parent="Player" unique_id=59082213]
 
@@ -211,8 +563,8 @@ volume_db = 10.079
 shape = SubResource("CapsuleShape3D_1u8w0")
 debug_color = Color(0.9115449, 0.00010299981, 0.72801316, 0.41960785)
 
-[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1671193945]
-environment = SubResource("Environment_5vw27")
+[node name="sfx" type="AudioStreamPlayer3D" parent="Player" unique_id=887714404]
+stream = ExtResource("7_a6jrf")
 
 [node name="Sprite3D2" type="Sprite3D" parent="." unique_id=2075025355]
 transform = Transform3D(181.86536, 0, -105, 0, 210, 0, 105, 0, 181.86536, 506, 0, -235.6532)
@@ -226,7 +578,7 @@ texture = ExtResource("2_lquwl")
 transform = Transform3D(-3.1019786e-06, 0, -70.965004, 0, 70.965004, 0, 70.965004, 0, -3.1019786e-06, 0, 30.295, 0)
 
 [node name="PathFollow3D" type="PathFollow3D" parent="Orbit" unique_id=431110181]
-transform = Transform3D(-0.90998733, 0.020113243, -0.41428885, 0.022097507, 0.9997477, -9.316445e-10, 0.41404408, -0.009151523, -0.91052526, -2.455, 0, 0)
+transform = Transform3D(-0.90998733, 0.020113232, -0.41428885, 0.022097507, 0.9997471, -9.316445e-10, 0.41404408, -0.009151517, -0.91052526, -2.455, 0, 0)
 
 [node name="GodotBotMoon" parent="Orbit/PathFollow3D" unique_id=1089709456 instance=ExtResource("6_7mycd")]
 transform = Transform3D(-0.15322508, 0.0037475352, 0.072588004, 0.003386723, 0.16954923, -0.0016044076, -0.07260573, 0, -0.15326248, 0.006, 0, -0.001)
@@ -280,6 +632,9 @@ bones/21/rotation = Quaternion(0.99244106, -0.0215624, 0.002181407, -0.12079342)
 bones/22/rotation = Quaternion(0.20193174, -0.008042817, -0.025483496, 0.97903496)
 bones/23/rotation = Quaternion(-0.63243103, -0.0034812521, 0.004700289, 0.7745946)
 bones/24/rotation = Quaternion(6.345563e-08, 0.9807643, -0.19519578, -1.8277876e-06)
+
+[node name="Chest" parent="GodotBotPlanet/Node3D/Grob/3DGodotRobot/RobotArmature/Skeleton3D" index="1" unique_id=1596627311]
+material_override = SubResource("StandardMaterial3D_lswn8")
 
 [node name="AnimationPlayer" parent="GodotBotPlanet/Node3D/Grob/3DGodotRobot" parent_id_path=PackedInt32Array(1047804978, 306271353) index="1" unique_id=863736044]
 autoplay = &"Run"
@@ -431,29 +786,29 @@ transform = Transform3D(-0.012103102, 0, 0.015922152, 0, 0.020000001, 0, -0.0159
 script = ExtResource("13_0odxb")
 metadata/_edit_group_ = true
 
-[node name="Skeleton3D" parent="GodotBotPlanet/Node3D/GB/godot_plush_model/Rig" parent_id_path=PackedInt32Array(1898066695, 458721011, 154476934) index="0" unique_id=1405342878]
-bones/0/rotation = Quaternion(0.06972221, 0.031265277, -0.0021862814, 0.99707407)
-bones/1/rotation = Quaternion(-0.07813114, 0.111803174, 0.55021596, -0.823807)
-bones/2/rotation = Quaternion(0.2572329, 0.08473901, -0.022615345, 0.9623613)
-bones/4/rotation = Quaternion(-0.08034821, -0.19620594, 0.5374404, 0.81621397)
-bones/5/rotation = Quaternion(0.09728409, 0.08728188, -0.008598879, 0.99138486)
-bones/7/rotation = Quaternion(0.99707407, -0.0021862818, -0.031265277, -0.06972223)
-bones/8/rotation = Quaternion(-0.5050667, -0.014089486, -0.20848845, 0.8374018)
+[node name="Skeleton3D" parent="GodotBotPlanet/Node3D/GB/godot_plush_model/Rig" parent_id_path=PackedInt32Array(1898066695, 458721011, 1071284328) index="0" unique_id=268352740]
+bones/0/rotation = Quaternion(0.069724105, 0.030392267, -0.0021252343, 0.99710107)
+bones/1/rotation = Quaternion(-0.078929365, 0.11338925, 0.55032486, -0.8234414)
+bones/2/rotation = Quaternion(0.25692913, 0.085627526, -0.022829646, 0.9623587)
+bones/4/rotation = Quaternion(-0.081168026, -0.19776459, 0.53741884, 0.81577075)
+bones/5/rotation = Quaternion(0.097567566, 0.08818903, -0.008710416, 0.9912757)
+bones/7/rotation = Quaternion(0.99710095, -0.0021252346, -0.03039226, -0.06972411)
+bones/8/rotation = Quaternion(-0.5073958, -0.014165271, -0.20962285, 0.83570755)
 bones/9/position = Vector3(-3.3308307e-08, 0.15368378, -1.2351457e-08)
-bones/9/rotation = Quaternion(0.2277405, -0.21039918, 0.050454147, 0.94937927)
+bones/9/rotation = Quaternion(0.2300776, -0.21027425, 0.050972093, 0.9488155)
 bones/10/position = Vector3(-3.4175958e-09, 0.20754741, -5.7180345e-09)
 bones/10/rotation = Quaternion(-0.4582506, -5.0523453e-05, 8.525081e-05, 0.8888231)
 bones/11/position = Vector3(-7.286375e-09, 0.25123602, -2.0337191e-08)
 bones/11/rotation = Quaternion(-0.000106262676, 0.9324278, -0.36135632, 4.765731e-05)
-bones/12/rotation = Quaternion(0.006273843, -0.0024156927, -0.033972632, 0.99940014)
+bones/12/rotation = Quaternion(0.0090816645, -0.0025028114, -0.035273544, 0.9993333)
 bones/13/position = Vector3(-1.6307187e-08, 0.15368378, -3.3035645e-09)
-bones/13/rotation = Quaternion(0.39072323, 0.1984121, -0.08666814, 0.89468247)
+bones/13/rotation = Quaternion(0.38851887, 0.1986249, -0.08617928, 0.89564186)
 bones/14/position = Vector3(1.8605126e-09, 0.20754749, -3.2998585e-08)
 bones/14/rotation = Quaternion(-0.4582507, 0.00016563239, -2.5947678e-05, 0.8888231)
 bones/15/position = Vector3(-5.6180607e-09, 0.25123596, -3.5406995e-08)
 bones/15/rotation = Quaternion(-1.8506069e-05, 0.93242776, -0.36135638, 0.00027428402)
 
-[node name="AnimationPlayer" parent="GodotBotPlanet/Node3D/GB/godot_plush_model" parent_id_path=PackedInt32Array(1898066695, 458721011) index="1" unique_id=1573530794]
+[node name="AnimationPlayer" parent="GodotBotPlanet/Node3D/GB/godot_plush_model" parent_id_path=PackedInt32Array(1898066695, 458721011) index="1" unique_id=1476407243]
 autoplay = &"fall"
 
 [node name="Area3D" type="Area3D" parent="GodotBotPlanet/Node3D/GB" unique_id=414124338]
@@ -471,27 +826,27 @@ transform = Transform3D(-0.009124762, -0.017397225, 0.0037516837, -0.016561352, 
 script = ExtResource("13_0odxb")
 metadata/_edit_group_ = true
 
-[node name="Skeleton3D" parent="GodotBotPlanet/Node3D/GB2/godot_plush_model/Rig" parent_id_path=PackedInt32Array(1667620355, 458721011, 154476934) index="0" unique_id=1405342878]
-bones/0/position = Vector3(0, 0.77195513, 0)
-bones/0/rotation = Quaternion(-9.376889e-05, -0.04661351, 0.0020866182, 0.9989109)
-bones/1/rotation = Quaternion(-0.071567215, 0.15600556, 0.9247023, -0.33980322)
-bones/2/rotation = Quaternion(0.28595886, -0.027232176, 0.008127784, 0.9578205)
-bones/4/rotation = Quaternion(-0.122992985, -0.22212788, 0.9090182, 0.33048126)
-bones/5/rotation = Quaternion(0.112227306, -0.028239759, 0.0031928597, 0.9932761)
-bones/7/position = Vector3(0, 0.77195513, 0)
-bones/7/rotation = Quaternion(0.9989109, 0.0020866164, 0.046613514, 9.381254e-05)
-bones/8/rotation = Quaternion(-0.048653875, -0.0039420035, -0.05675204, 0.9971943)
-bones/9/position = Vector3(-2.3003711e-08, 0.1533384, 4.3176485e-10)
-bones/9/rotation = Quaternion(0.28208923, -0.19708708, 0.059311893, 0.937051)
-bones/10/position = Vector3(9.81211e-09, 0.207194, 2.4530418e-09)
-bones/10/rotation = Quaternion(-0.59437406, -0.056875948, 0.02358203, 0.8018283)
+[node name="Skeleton3D" parent="GodotBotPlanet/Node3D/GB2/godot_plush_model/Rig" parent_id_path=PackedInt32Array(1667620355, 458721011, 1071284328) index="0" unique_id=268352740]
+bones/0/position = Vector3(0, 0.7816523, 0)
+bones/0/rotation = Quaternion(2.5216003e-05, -0.0028477777, -0.00793413, 0.99996454)
+bones/1/rotation = Quaternion(0.09243413, -0.16221753, 0.92422533, -0.33309004)
+bones/2/rotation = Quaternion(0.09243158, 0.019047156, -0.0017674689, 0.9955354)
+bones/4/rotation = Quaternion(0.04013519, 0.09543485, 0.93491215, 0.3394417)
+bones/5/rotation = Quaternion(0.3050566, 0.018216074, -0.0058372137, 0.9521422)
+bones/7/position = Vector3(0, 0.7816523, 0)
+bones/7/rotation = Quaternion(0.99996454, -0.00793413, 0.0028477774, -2.5185322e-05)
+bones/8/rotation = Quaternion(-0.059936564, -0.0052660005, -0.07651726, 0.99525124)
+bones/9/position = Vector3(-1.2672926e-08, 0.1523247, 7.4134623e-09)
+bones/9/rotation = Quaternion(0.25805002, -0.19546643, 0.05337373, 0.94464517)
+bones/10/position = Vector3(-6.230569e-09, 0.20615335, 2.7617366e-09)
+bones/10/rotation = Quaternion(-0.5636661, -0.016721558, 0.035762914, 0.82505876)
 bones/11/position = Vector3(-1.8974232e-08, 0.25121188, -1.34572575e-08)
 bones/11/rotation = Quaternion(-0.00010266324, 0.93244886, -0.36130205, 4.6266316e-05)
-bones/12/rotation = Quaternion(-0.12929322, 0.0061075357, 0.09324328, 0.9871938)
-bones/13/position = Vector3(-1.8198287e-08, 0.15239726, 6.2485834e-09)
-bones/13/rotation = Quaternion(0.33532056, 0.19015557, -0.06931868, 0.9201065)
-bones/14/position = Vector3(-1.859166e-08, 0.20603865, -2.1582249e-08)
-bones/14/rotation = Quaternion(-0.572595, -0.035560332, -0.039946347, 0.8180921)
+bones/12/rotation = Quaternion(-0.034826674, 0.0023830482, 0.037660215, 0.9986807)
+bones/13/position = Vector3(2.2621657e-08, 0.15284006, -8.387126e-09)
+bones/13/rotation = Quaternion(0.20597702, 0.20508765, -0.0442028, 0.9558027)
+bones/14/position = Vector3(-2.5592524e-09, 0.2065599, 1.7391724e-09)
+bones/14/rotation = Quaternion(-0.5456404, 0.0073530627, -0.02623315, 0.8375765)
 bones/15/position = Vector3(-4.381811e-08, 0.25120696, -3.54451e-08)
 bones/15/rotation = Quaternion(-2.7811215e-05, 0.9324604, -0.36127213, 0.00027790133)
 
@@ -510,27 +865,27 @@ transform = Transform3D(-0.019926995, 0, 0.0017072933, -0.0002606911, 0.01976547
 script = ExtResource("13_0odxb")
 metadata/_edit_group_ = true
 
-[node name="Skeleton3D" parent="GodotBotPlanet/Node3D/GB3/godot_plush_model/Rig" parent_id_path=PackedInt32Array(1635832667, 458721011, 154476934) index="0" unique_id=1405342878]
-bones/0/position = Vector3(0.0045335144, 0.8459022, 6.533867e-05)
-bones/0/rotation = Quaternion(0.0009373422, -0.04072718, -0.023758613, 0.9988874)
-bones/1/rotation = Quaternion(-0.12974097, 0.25755385, 0.8510275, -0.4388456)
-bones/2/rotation = Quaternion(0.3839865, 4.657225e-07, -1.1363482e-07, 0.9233388)
-bones/4/rotation = Quaternion(-0.17110285, -0.32714492, 0.82677555, 0.4244316)
-bones/5/rotation = Quaternion(0.13897538, -2.2283286e-08, -1.2993115e-07, 0.9902959)
-bones/7/position = Vector3(0.0036843624, 0.80142295, 0)
-bones/7/rotation = Quaternion(0.99912, -0.0099915005, 0.040736195, -0.0003838129)
-bones/8/rotation = Quaternion(0.54670805, 0.0025192904, 0.03927388, 0.836398)
-bones/9/position = Vector3(-1.0039901e-08, 0.19066557, -3.9731514e-08)
-bones/9/rotation = Quaternion(1.4250885e-06, -0.089107856, -1.620383e-05, 0.99602205)
-bones/10/position = Vector3(-2.070916e-08, 0.24454886, 1.4399473e-09)
-bones/10/rotation = Quaternion(-0.3415971, -0.023322413, 0.078601435, 0.9362635)
+[node name="Skeleton3D" parent="GodotBotPlanet/Node3D/GB3/godot_plush_model/Rig" parent_id_path=PackedInt32Array(1635832667, 458721011, 1071284328) index="0" unique_id=268352740]
+bones/0/position = Vector3(-0.014788233, 0.7240286, 9.571255e-05)
+bones/0/rotation = Quaternion(-0.0007873466, -0.010766253, 0.07182329, 0.997359)
+bones/1/rotation = Quaternion(0.06940785, -0.12921043, 0.8797081, -0.45232835)
+bones/2/rotation = Quaternion(0.29600102, 1.9427064e-07, -7.577543e-09, 0.95518774)
+bones/4/rotation = Quaternion(0.025844712, 0.0559157, 0.88738674, 0.45689216)
+bones/5/rotation = Quaternion(0.23093009, -2.768397e-07, 4.983189e-08, 0.9729704)
+bones/7/position = Vector3(-0.018193146, 0.7623509, 0)
+bones/7/rotation = Quaternion(0.99864954, 0.050820068, 0.010780334, 0.0005626397)
+bones/8/rotation = Quaternion(-0.52411485, -0.0019650548, -0.0274811, 0.85120183)
+bones/9/position = Vector3(2.138041e-08, 0.14879319, 4.530775e-08)
+bones/9/rotation = Quaternion(0.5763933, -0.098785065, 0.072234936, 0.80795693)
+bones/10/position = Vector3(-5.5719105e-09, 0.20220415, -1.5381505e-09)
+bones/10/rotation = Quaternion(-0.74494225, 0.0030521303, -0.045642868, 0.6655588)
 bones/11/position = Vector3(2.7353977e-08, 0.2512972, 2.4622263e-08)
 bones/11/rotation = Quaternion(-9.2333896e-05, 0.9323885, -0.36145777, 4.2263364e-05)
-bones/12/rotation = Quaternion(-0.23793142, -0.0020331717, -0.028288223, 0.97086775)
-bones/13/position = Vector3(-8.8044665e-09, 0.17875677, -1.2693138e-08)
-bones/13/rotation = Quaternion(1.284872e-05, 0.08793493, -1.7529635e-05, 0.99612623)
-bones/14/position = Vector3(-7.3784423e-09, 0.23263884, -4.0394642e-08)
-bones/14/rotation = Quaternion(-0.22346272, -0.054536548, 0.029204912, 0.9727473)
+bones/12/rotation = Quaternion(0.44895437, 0.0037583935, 0.057898562, 0.891669)
+bones/13/position = Vector3(7.736626e-09, 0.17129928, 2.767933e-08)
+bones/13/rotation = Quaternion(4.2614334e-05, 0.08113446, -1.9874265e-05, 0.9967032)
+bones/14/position = Vector3(-1.4208101e-10, 0.22517897, -2.506984e-08)
+bones/14/rotation = Quaternion(-0.54213256, 0.024496833, -0.080752835, 0.83604497)
 bones/15/position = Vector3(-1.898326e-09, 0.25129607, -2.8430785e-08)
 bones/15/rotation = Quaternion(6.1026617e-06, 0.93238884, -0.36145654, 0.0002647265)
 
@@ -549,27 +904,27 @@ transform = Transform3D(-0.017534368, 0, -0.00962008, 0, 0.020000001, 0, 0.00962
 script = ExtResource("13_0odxb")
 metadata/_edit_group_ = true
 
-[node name="Skeleton3D" parent="GodotBotPlanet/Node3D/GB4/godot_plush_model/Rig" parent_id_path=PackedInt32Array(949826934, 458721011, 154476934) index="0" unique_id=1405342878]
-bones/0/position = Vector3(-0.027762711, 0.68427616, -0.018046511)
-bones/0/rotation = Quaternion(0.12328784, -0.0896539, 0.080763206, 0.9850074)
-bones/1/rotation = Quaternion(-0.042208306, 0.06787774, 0.76986974, -0.63317597)
-bones/2/rotation = Quaternion(0.4041402, 0.024277005, -0.011025512, 0.91430837)
-bones/4/rotation = Quaternion(-0.069167964, -0.14858536, 0.76089126, 0.6278396)
-bones/5/rotation = Quaternion(0.11703008, 0.02650977, -0.0028537486, 0.99277043)
-bones/7/position = Vector3(-0.038403478, 0.7579818, 0)
-bones/7/rotation = Quaternion(0.9861883, 0.06481153, 0.08764604, -0.12470102)
-bones/8/rotation = Quaternion(-0.83776855, -0.011046671, -0.16368411, 0.5207969)
-bones/9/position = Vector3(-7.3407023e-09, 0.14763203, -9.282242e-08)
-bones/9/rotation = Quaternion(0.927344, -0.047831237, 0.1411845, 0.3432381)
-bones/10/position = Vector3(-1.1077804e-08, 0.19901386, 1.3534779e-08)
-bones/10/rotation = Quaternion(-0.14024435, -0.06988044, 0.057574496, 0.9859683)
+[node name="Skeleton3D" parent="GodotBotPlanet/Node3D/GB4/godot_plush_model/Rig" parent_id_path=PackedInt32Array(949826934, 458721011, 1071284328) index="0" unique_id=268352740]
+bones/0/position = Vector3(-0.028005451, 0.682037, -0.017727476)
+bones/0/rotation = Quaternion(0.12320697, -0.090581216, 0.08087543, 0.9849235)
+bones/1/rotation = Quaternion(-0.045122724, 0.07357439, 0.7696291, -0.6326309)
+bones/2/rotation = Quaternion(0.40554017, 0.025552923, -0.011604971, 0.9136464)
+bones/4/rotation = Quaternion(-0.07207899, -0.15421061, 0.7601812, 0.6270155)
+bones/5/rotation = Quaternion(0.11548797, 0.02790306, -0.0030037358, 0.99291235)
+bones/7/position = Vector3(-0.03864819, 0.754564, 0)
+bones/7/rotation = Quaternion(0.9860934, 0.06511516, 0.08859866, -0.124620445)
+bones/8/rotation = Quaternion(-0.84161246, -0.011254671, -0.16680333, 0.51355493)
+bones/9/position = Vector3(-7.6760625e-09, 0.14763443, -9.159318e-08)
+bones/9/rotation = Quaternion(0.9343449, -0.045689452, 0.14345816, 0.32300472)
+bones/10/position = Vector3(-1.2025147e-08, 0.19892712, 1.2112432e-08)
+bones/10/rotation = Quaternion(-0.13734658, -0.06890145, 0.060388017, 0.98627675)
 bones/11/position = Vector3(-8.460832e-09, 0.25128454, 2.6575393e-08)
 bones/11/rotation = Quaternion(-9.447779e-05, 0.9323842, -0.36146885, 4.307012e-05)
-bones/12/rotation = Quaternion(-0.04141569, 0.009962861, 0.15077865, 0.98764944)
-bones/13/position = Vector3(-2.4924661e-08, 0.15206863, -1.7591457e-08)
-bones/13/rotation = Quaternion(0.46574345, 0.03023338, -0.006801483, 0.88437706)
-bones/14/position = Vector3(1.312042e-08, 0.2056025, 7.84869e-08)
-bones/14/rotation = Quaternion(-0.72056985, -0.04930909, -0.096668966, 0.6848378)
+bones/12/rotation = Quaternion(-0.060634542, 0.010102458, 0.15286227, 0.98633397)
+bones/13/position = Vector3(-2.7968603e-08, 0.15148968, -1.616721e-08)
+bones/13/rotation = Quaternion(0.4880958, 0.02741463, -0.007125291, 0.8723304)
+bones/14/position = Vector3(1.515053e-08, 0.20500547, 8.034144e-08)
+bones/14/rotation = Quaternion(-0.72876656, -0.050822724, -0.09640188, 0.67603475)
 bones/15/position = Vector3(3.4537997e-08, 0.25128865, -1.7744516e-07)
 bones/15/rotation = Quaternion(4.283824e-06, 0.9323838, -0.3614699, 0.00026539937)
 
@@ -595,6 +950,9 @@ shape = SubResource("SphereShape3D_ryguw")
 [node name="Gorf2" parent="GodotBotPlanet/Node3D" unique_id=1246856074 instance=ExtResource("12_ryguw")]
 transform = Transform3D(-0.01846175, 0.004735898, -0.0060609435, 0.0045018555, 0.01943119, 0.0014704017, 0.0062367506, -6.964856e-06, -0.019002704, 0.7767392, -0.012886382, -0.39240038)
 metadata/_edit_group_ = true
+
+[node name="UpperLegs" parent="GodotBotPlanet/Node3D/Gorf2/Gobot/Armature/Skeleton3D" parent_id_path=PackedInt32Array(1246856074, 362190138, 1004885326) index="3" unique_id=963345075]
+material_override = null
 
 [node name="Area3D" type="Area3D" parent="GodotBotPlanet/Node3D/Gorf2" unique_id=818677599]
 
@@ -659,213 +1017,14 @@ metadata/_edit_group_ = true
 [node name="CollisionShape3D" type="CollisionShape3D" parent="GodotBotPlanet/Node3D/Golo4/Area3D" unique_id=502933269]
 shape = SubResource("SphereShape3D_ryguw")
 
-[node name="WorldEnvironmentBGLayer" type="CanvasLayer" parent="." unique_id=1174235322]
-follow_viewport_scale = 1.574
-
-[node name="BG" type="Sprite2D" parent="WorldEnvironmentBGLayer" unique_id=1505206425]
-texture_filter = 1
-texture_repeat = 2
-position = Vector2(415, 167)
-texture = ExtResource("1_1bvp3")
-offset = Vector2(160, 160)
-region_enabled = true
-region_rect = Rect2(0, 0, 51200, 5120)
-metadata/_edit_lock_ = true
-
-[node name="Sprite2D2" type="Sprite2D" parent="WorldEnvironmentBGLayer" unique_id=319777683]
-position = Vector2(312, 255)
-texture = ExtResource("9_kek77")
-
-[node name="Download(5)" type="Sprite2D" parent="WorldEnvironmentBGLayer" unique_id=1804432997]
-position = Vector2(1855, 551)
-scale = Vector2(0.38, 0.38)
-texture = ExtResource("10_w48qg")
-
-[node name="Download(6)" type="Sprite2D" parent="WorldEnvironmentBGLayer" unique_id=1310974427]
-position = Vector2(-1618, 127)
-scale = Vector2(0.43, 0.43)
-texture = ExtResource("11_vivmo")
-
-[node name="Download(7)" type="Sprite2D" parent="WorldEnvironmentBGLayer" unique_id=1290959958]
-position = Vector2(-736, 542)
-texture = ExtResource("12_2cqfq")
-
-[node name="Download(8)" type="Sprite2D" parent="WorldEnvironmentBGLayer" unique_id=596651971]
-position = Vector2(-2860, 450)
-texture = ExtResource("13_yaehf")
-
-[node name="Download(10)" type="Sprite2D" parent="WorldEnvironmentBGLayer" unique_id=420325378]
-position = Vector2(3419, 119)
-scale = Vector2(0.38, 0.38)
-texture = ExtResource("14_074og")
-
-[node name="Download(6)2" type="Sprite2D" parent="WorldEnvironmentBGLayer" unique_id=283839178]
-position = Vector2(-4826, 368)
-texture = ExtResource("11_vivmo")
-
-[node name="Download(8)2" type="Sprite2D" parent="WorldEnvironmentBGLayer" unique_id=1533830230]
-position = Vector2(4167, 398)
-scale = Vector2(1.55, 1.55)
-texture = ExtResource("13_yaehf")
-
-[node name="Download(5)2" type="Sprite2D" parent="WorldEnvironmentBGLayer" unique_id=1019604574]
-self_modulate = Color(0.42000002, 0.8743333, 1, 1)
-position = Vector2(2437, 159)
-rotation = 2.417281
-scale = Vector2(1.24, 1.24)
-texture = ExtResource("10_w48qg")
-
-[node name="UI" type="CanvasLayer" parent="." unique_id=2100660002]
-script = ExtResource("18_82xsv")
-
-[node name="BG" type="Sprite2D" parent="UI" unique_id=1964503725]
-material = SubResource("CanvasItemMaterial_vivmo")
-position = Vector2(916.99994, 420.99994)
-scale = Vector2(0.085, 0.085)
-texture = ExtResource("15_vivmo")
-
-[node name="Sprite2D" type="Sprite2D" parent="UI" unique_id=1252486079]
-texture_filter = 3
-position = Vector2(916.99994, 420.99994)
-scale = Vector2(0.07, 0.07)
-texture = ExtResource("15_vivmo")
-
-[node name="Golanda" type="Node2D" parent="UI" unique_id=26442665]
-position = Vector2(1015, 388)
-metadata/_edit_group_ = true
-
-[node name="Sprite2D" type="Sprite2D" parent="UI/Golanda" unique_id=191289209]
-scale = Vector2(0.08, 0.08)
-texture = ExtResource("20_getpj")
-
-[node name="Grommbelle" type="Node2D" parent="UI" unique_id=315836730]
-position = Vector2(848, 329)
-metadata/_edit_group_ = true
-
-[node name="Sprite2D" type="Sprite2D" parent="UI/Grommbelle" unique_id=681414162]
-scale = Vector2(0.08, 0.08)
-texture = ExtResource("20_getpj")
-
-[node name="Graevur" type="Node2D" parent="UI" unique_id=944702650]
-position = Vector2(843, 408)
-metadata/_edit_group_ = true
-
-[node name="Sprite2D" type="Sprite2D" parent="UI/Graevur" unique_id=584746685]
-scale = Vector2(0.08, 0.08)
-texture = ExtResource("20_getpj")
-
-[node name="Groedon" type="Node2D" parent="UI" unique_id=938785588]
-position = Vector2(863, 378)
-metadata/_edit_group_ = true
-
-[node name="Sprite2D" type="Sprite2D" parent="UI/Groedon" unique_id=2002778552]
-scale = Vector2(0.08, 0.08)
-texture = ExtResource("20_getpj")
-
-[node name="Golhod" type="Node2D" parent="UI" unique_id=548993305]
-position = Vector2(796, 387)
-metadata/_edit_group_ = true
-
-[node name="Sprite2D" type="Sprite2D" parent="UI/Golhod" unique_id=1013143419]
-scale = Vector2(0.08, 0.08)
-texture = ExtResource("20_getpj")
-
-[node name="Gissen" type="Node2D" parent="UI" unique_id=1628612318]
-position = Vector2(995, 398)
-metadata/_edit_group_ = true
-
-[node name="Sprite2D" type="Sprite2D" parent="UI/Gissen" unique_id=1221425179]
-scale = Vector2(0.08, 0.08)
-texture = ExtResource("20_getpj")
-
-[node name="Gehmbu" type="Node2D" parent="UI" unique_id=531605652]
-position = Vector2(841, 480)
-metadata/_edit_group_ = true
-
-[node name="Sprite2D" type="Sprite2D" parent="UI/Gehmbu" unique_id=1891378197]
-scale = Vector2(0.08, 0.08)
-texture = ExtResource("20_getpj")
-
-[node name="Galaan" type="Node2D" parent="UI" unique_id=2054290016]
-position = Vector2(915, 488)
-metadata/_edit_group_ = true
-
-[node name="Sprite2D" type="Sprite2D" parent="UI/Galaan" unique_id=1399234314]
-scale = Vector2(0.08, 0.08)
-texture = ExtResource("20_getpj")
-
-[node name="Garfu" type="Node2D" parent="UI" unique_id=1364788507]
-position = Vector2(949, 454)
-metadata/_edit_group_ = true
-
-[node name="Sprite2D" type="Sprite2D" parent="UI/Garfu" unique_id=1225645286]
-scale = Vector2(0.08, 0.08)
-texture = ExtResource("20_getpj")
-
-[node name="Gabani" type="Node2D" parent="UI" unique_id=462643765]
-position = Vector2(954, 437)
-metadata/_edit_group_ = true
-
-[node name="Sprite2D" type="Sprite2D" parent="UI/Gabani" unique_id=1038397182]
-scale = Vector2(0.08, 0.08)
-texture = ExtResource("20_getpj")
-
-[node name="Gavra" type="Node2D" parent="UI" unique_id=1608546304]
-position = Vector2(952, 431)
-metadata/_edit_group_ = true
-
-[node name="Sprite2D" type="Sprite2D" parent="UI/Gavra" unique_id=244702792]
-scale = Vector2(0.08, 0.08)
-texture = ExtResource("20_getpj")
-
-[node name="Galorp" type="Node2D" parent="UI" unique_id=1957845019]
-position = Vector2(1033, 476)
-metadata/_edit_group_ = true
-
-[node name="Sprite2D" type="Sprite2D" parent="UI/Galorp" unique_id=2121989665]
-scale = Vector2(0.08, 0.08)
-texture = ExtResource("20_getpj")
-
-[node name="Graina" type="Node2D" parent="UI" unique_id=238107314]
-position = Vector2(970, 522)
-metadata/_edit_group_ = true
-
-[node name="Sprite2D" type="Sprite2D" parent="UI/Graina" unique_id=1948553029]
-scale = Vector2(0.08, 0.08)
-texture = ExtResource("20_getpj")
-
-[node name="Gilona" type="Node2D" parent="UI" unique_id=1352783909]
-position = Vector2(1033, 369)
-metadata/_edit_group_ = true
-
-[node name="Sprite2D" type="Sprite2D" parent="UI/Gilona" unique_id=907296467]
-scale = Vector2(0.08, 0.08)
-texture = ExtResource("20_getpj")
-
-[node name="Grieven" type="Node2D" parent="UI" unique_id=1684659159]
-position = Vector2(999, 302)
-metadata/_edit_group_ = true
-
-[node name="Sprite2D" type="Sprite2D" parent="UI/Grieven" unique_id=1810195035]
-scale = Vector2(0.08, 0.08)
-texture = ExtResource("20_getpj")
-
-[node name="Gofon" type="Node2D" parent="UI" unique_id=1279422295]
-position = Vector2(780, 444)
-metadata/_edit_group_ = true
-
-[node name="Sprite2D" type="Sprite2D" parent="UI/Gofon" unique_id=848719516]
-scale = Vector2(0.08, 0.08)
-texture = ExtResource("20_getpj")
-
-[node name="Control" parent="UI" unique_id=637303894 instance=ExtResource("24_1u8w0")]
-offset_left = 60.0
-offset_top = 60.0
-offset_right = 100.0
-offset_bottom = 100.0
-
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=195495822]
 transform = Transform3D(1, 0, 0, 0, -0.92875135, 0.37070328, 0, -0.37070328, -0.92875135, 0, 0, 0)
+
+[node name="Timer" type="Timer" parent="." unique_id=1618992170]
+one_shot = true
+
+[connection signal="player_made_a_choice" from="Player" to="UI" method="_on_player_player_made_a_choice"]
+[connection signal="timeout" from="Timer" to="WelcomeBot" method="_on_timer_timeout"]
 
 [editable path="WelcomeBot"]
 [editable path="WelcomeBot/godot_plush_model"]
@@ -885,3 +1044,5 @@ transform = Transform3D(1, 0, 0, 0, -0.92875135, 0.37070328, 0, -0.37070328, -0.
 [editable path="GodotBotPlanet/Node3D/GB3/godot_plush_model"]
 [editable path="GodotBotPlanet/Node3D/GB4"]
 [editable path="GodotBotPlanet/Node3D/GB4/godot_plush_model"]
+[editable path="GodotBotPlanet/Node3D/Gorf2"]
+[editable path="GodotBotPlanet/Node3D/Gorf2/Gobot"]
