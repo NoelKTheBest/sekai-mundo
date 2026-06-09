@@ -1,9 +1,7 @@
 [gd_scene format=3 uid="uid://c3wu8f75mw4ae"]
 
 [ext_resource type="Texture2D" uid="uid://wyisfgwbegjx" path="res://assets/sprites/pixelart_starfields/pixelart_starfield.png" id="1_1bvp3"]
-[ext_resource type="Texture2D" uid="uid://csr5g2jgorevy" path="res://assets/sprites/pixelart_starfields/pixelart_starfield_corona.png" id="2_lquwl"]
 [ext_resource type="Script" uid="uid://cw12kmd1cxfk5" path="res://characters/welcome_bot.gd" id="2_lswn8"]
-[ext_resource type="Texture2D" uid="uid://bddpih1w0val8" path="res://assets/sprites/pixelart_starfields/pixelart_starfield_diagonal_diffraction_spikes.png" id="3_7mycd"]
 [ext_resource type="PackedScene" uid="uid://d37kpfi0aa3in" path="res://GodotBotPlanet.tscn" id="4_272bh"]
 [ext_resource type="Script" uid="uid://djg1nuh5qmwpr" path="res://player.gd" id="4_lquwl"]
 [ext_resource type="AudioStream" uid="uid://d1op85o67bl23" path="res://assets/audio/sekai_mundo_songs/Bleeping Demo.mp3" id="5_d13ii"]
@@ -30,6 +28,7 @@
 [ext_resource type="Texture2D" uid="uid://cm2e5wq7mfawo" path="res://icon.svg" id="20_getpj"]
 [ext_resource type="PackedScene" uid="uid://d2h1h2lm577ua" path="res://TransmissionScreen.tscn" id="24_1u8w0"]
 [ext_resource type="Script" uid="uid://ctymjwa5kbwo1" path="res://label.gd" id="29_kq58d"]
+[ext_resource type="PackedScene" uid="uid://dxcp5b2d271y1" path="res://pause_menu.tscn" id="31_seu75"]
 
 [sub_resource type="Environment" id="Environment_5vw27"]
 background_mode = 3
@@ -163,26 +162,26 @@ script = ExtResource("2_lswn8")
 rotation_speed = 0.0
 
 [node name="Skeleton3D" parent="WelcomeBot/godot_plush_model/Rig" parent_id_path=PackedInt32Array(1757613948, 458721011, 1071284328) index="0" unique_id=268352740]
-bones/0/position = Vector3(-0.13388886, 0.79637825, 0)
-bones/0/rotation = Quaternion(2.1243345e-08, 5.1373092e-09, 0.23505588, 0.9719819)
-bones/1/rotation = Quaternion(0.0051180082, -0.04255831, 0.6274518, -0.77747476)
-bones/2/rotation = Quaternion(0.026379324, -0.7066145, 0.026379317, 0.7066146)
-bones/4/rotation = Quaternion(-0.19515753, -0.37401247, 0.8066575, 0.4139226)
+bones/0/position = Vector3(-0.009150643, 0.79637825, 0)
+bones/0/rotation = Quaternion(2.1852193e-08, 3.910355e-10, 0.017891694, 0.99984)
+bones/1/rotation = Quaternion(0.02190079, -0.03684785, 0.88838273, -0.4570982)
+bones/2/rotation = Quaternion(0.10760511, -0.69887114, 0.10760517, 0.69887155)
+bones/4/rotation = Quaternion(-0.034159508, -0.060675062, 0.88707393, 0.45634586)
 bones/5/rotation = Quaternion(0.09210466, -2.0888399e-07, -1.168479e-07, 0.9957494)
-bones/7/position = Vector3(-0.13388886, 0.79637825, 0)
-bones/7/rotation = Quaternion(0.9719819, 0.23505588, 5.1373092e-09, 2.1243345e-08)
-bones/8/rotation = Quaternion(0.05570027, 0.013130734, 0.19803129, 0.97852373)
-bones/9/position = Vector3(-5.443961e-10, 0.21157674, -1.8318651e-08)
-bones/9/rotation = Quaternion(1.3140692e-07, -0.014744592, -1.6310489e-05, 0.9998914)
-bones/10/position = Vector3(5.0366635e-09, 0.2654604, 1.7740536e-08)
-bones/10/rotation = Quaternion(-0.43748564, -0.20429455, -0.03569375, 0.8749835)
+bones/7/position = Vector3(-0.009150643, 0.79637825, 0)
+bones/7/rotation = Quaternion(0.99984, 0.017891694, 3.910355e-10, 2.1852193e-08)
+bones/8/rotation = Quaternion(0.065363035, 0.0010579115, 0.017864479, 0.9977011)
+bones/9/position = Vector3(-1.6867476e-08, 0.15785402, 6.236942e-09)
+bones/9/rotation = Quaternion(0.014948064, -0.0013617339, 6.5084447e-07, 0.9998874)
+bones/10/position = Vector3(3.698008e-08, 0.21172982, 2.7170847e-08)
+bones/10/rotation = Quaternion(-0.46467412, -0.20319802, -0.07048943, 0.8589644)
 bones/11/position = Vector3(1.584344e-08, 0.25127903, -2.4805324e-08)
 bones/11/rotation = Quaternion(-0.00011452154, 0.9323838, -0.36146998, 5.084109e-05)
-bones/12/rotation = Quaternion(-0.22140032, 0.013924052, 0.20985681, 0.95223325)
-bones/13/position = Vector3(4.5961475e-09, 0.15089543, 2.1456477e-08)
-bones/13/rotation = Quaternion(0.49546105, -0.07966006, 0.04568642, 0.8637623)
-bones/14/position = Vector3(-1.3027465e-08, 0.20435452, -1.8736943e-08)
-bones/14/rotation = Quaternion(-0.640825, 0.23870932, 0.02137116, 0.7293179)
+bones/12/rotation = Quaternion(-0.010489361, 0.0010655213, 0.017993035, 0.9997825)
+bones/13/position = Vector3(1.0431143e-08, 0.15336022, -1.6112493e-08)
+bones/13/rotation = Quaternion(0.15101118, -0.002837944, 0.00043287128, 0.98852795)
+bones/14/position = Vector3(4.956532e-09, 0.20721875, 1.3752565e-08)
+bones/14/rotation = Quaternion(-0.5158177, 0.2099372, 0.058905084, 0.82848585)
 bones/15/position = Vector3(1.6880678e-08, 0.25127897, -2.6835433e-08)
 bones/15/rotation = Quaternion(-1.0226061e-05, 0.9323838, -0.36146995, 0.0002710521)
 
@@ -198,16 +197,6 @@ shape = SubResource("SphereShape3D_ryguw")
 root_node = NodePath("../godot_plush_model")
 tree_root = SubResource("AnimationNodeBlendTree_xuqvo")
 anim_player = NodePath("../godot_plush_model/AnimationPlayer")
-
-[node name="Sprite3D" type="Sprite3D" parent="." unique_id=687324290]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.8982475, 0, 0)
-visible = false
-texture = ExtResource("1_1bvp3")
-
-[node name="Sprite3D3" type="Sprite3D" parent="." unique_id=1343414501]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.2853093, 0, 0)
-visible = false
-texture = ExtResource("3_7mycd")
 
 [node name="WorldEnvironmentBGLayer" type="CanvasLayer" parent="." unique_id=1174235322]
 follow_viewport_scale = 1.574
@@ -544,6 +533,13 @@ offset_right = 143.0
 offset_bottom = 28.0
 text = "Press Q to quit"
 
+[node name="Label2" type="Label" parent="UI" unique_id=802465037]
+offset_left = 899.0
+offset_top = 9.0
+offset_right = 1150.0
+offset_bottom = 32.0
+text = "Press Backspace to remove msg"
+
 [node name="Player" type="Camera3D" parent="." unique_id=1181995338]
 transform = Transform3D(-0.9998986, 0.001327115, -0.014179394, -0.00040062363, 0.9926334, 0.121156216, 0.0142357275, 0.12114961, -0.9925322, 0, 3.2636561, -160.24553)
 keep_aspect = 0
@@ -554,7 +550,6 @@ canvas_bg_speed = 12
 
 [node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="Player" unique_id=305833683]
 stream = SubResource("AudioStreamPlaylist_seu75")
-volume_db = 10.079
 autoplay = true
 
 [node name="Area3D" type="Area3D" parent="Player" unique_id=59082213]
@@ -566,19 +561,11 @@ debug_color = Color(0.9115449, 0.00010299981, 0.72801316, 0.41960785)
 [node name="sfx" type="AudioStreamPlayer3D" parent="Player" unique_id=887714404]
 stream = ExtResource("7_a6jrf")
 
-[node name="Sprite3D2" type="Sprite3D" parent="." unique_id=2075025355]
-transform = Transform3D(181.86536, 0, -105, 0, 210, 0, 105, 0, 181.86536, 506, 0, -235.6532)
-visible = false
-modulate = Color(0.8509804, 0.7058824, 0, 1)
-transparent = false
-texture_filter = 2
-texture = ExtResource("2_lquwl")
-
 [node name="Orbit" parent="." unique_id=1356420342 instance=ExtResource("8_5vw27")]
 transform = Transform3D(-3.1019786e-06, 0, -70.965004, 0, 70.965004, 0, 70.965004, 0, -3.1019786e-06, 0, 30.295, 0)
 
 [node name="PathFollow3D" type="PathFollow3D" parent="Orbit" unique_id=431110181]
-transform = Transform3D(-0.90998733, 0.020113232, -0.41428885, 0.022097507, 0.9997471, -9.316445e-10, 0.41404408, -0.009151517, -0.91052526, -2.455, 0, 0)
+transform = Transform3D(-0.90998733, 0.020113207, -0.41428885, 0.022097507, 0.99974585, -9.316445e-10, 0.41404408, -0.009151506, -0.91052526, -2.455, 0, 0)
 
 [node name="GodotBotMoon" parent="Orbit/PathFollow3D" unique_id=1089709456 instance=ExtResource("6_7mycd")]
 transform = Transform3D(-0.15322508, 0.0037475352, 0.072588004, 0.003386723, 0.16954923, -0.0016044076, -0.07260573, 0, -0.15326248, 0.006, 0, -0.001)
@@ -787,22 +774,22 @@ script = ExtResource("13_0odxb")
 metadata/_edit_group_ = true
 
 [node name="Skeleton3D" parent="GodotBotPlanet/Node3D/GB/godot_plush_model/Rig" parent_id_path=PackedInt32Array(1898066695, 458721011, 1071284328) index="0" unique_id=268352740]
-bones/0/rotation = Quaternion(0.069724105, 0.030392267, -0.0021252343, 0.99710107)
-bones/1/rotation = Quaternion(-0.078929365, 0.11338925, 0.55032486, -0.8234414)
-bones/2/rotation = Quaternion(0.25692913, 0.085627526, -0.022829646, 0.9623587)
-bones/4/rotation = Quaternion(-0.081168026, -0.19776459, 0.53741884, 0.81577075)
-bones/5/rotation = Quaternion(0.097567566, 0.08818903, -0.008710416, 0.9912757)
-bones/7/rotation = Quaternion(0.99710095, -0.0021252346, -0.03039226, -0.06972411)
-bones/8/rotation = Quaternion(-0.5073958, -0.014165271, -0.20962285, 0.83570755)
+bones/0/rotation = Quaternion(0.06967063, 0.049470734, -0.0034593318, 0.9963367)
+bones/1/rotation = Quaternion(-0.05991866, 0.07568201, 0.54752916, -0.83120024)
+bones/2/rotation = Quaternion(0.26228532, 0.06460534, -0.017625688, 0.962664)
+bones/4/rotation = Quaternion(-0.061671585, -0.16063216, 0.5377275, 0.8253746)
+bones/5/rotation = Quaternion(0.09266016, 0.066678725, -0.0061965585, 0.9934434)
+bones/7/rotation = Quaternion(0.99633664, -0.0034593325, -0.04947073, -0.06967064)
+bones/8/rotation = Quaternion(-0.45092598, -0.012333973, -0.18221693, 0.8736766)
 bones/9/position = Vector3(-3.3308307e-08, 0.15368378, -1.2351457e-08)
-bones/9/rotation = Quaternion(0.2300776, -0.21027425, 0.050972093, 0.9488155)
+bones/9/rotation = Quaternion(0.17869122, -0.21271238, 0.039583985, 0.95982087)
 bones/10/position = Vector3(-3.4175958e-09, 0.20754741, -5.7180345e-09)
 bones/10/rotation = Quaternion(-0.4582506, -5.0523453e-05, 8.525081e-05, 0.8888231)
 bones/11/position = Vector3(-7.286375e-09, 0.25123602, -2.0337191e-08)
 bones/11/rotation = Quaternion(-0.000106262676, 0.9324278, -0.36135632, 4.765731e-05)
-bones/12/rotation = Quaternion(0.0090816645, -0.0025028114, -0.035273544, 0.9993333)
+bones/12/rotation = Quaternion(-0.057438094, -0.00043317056, -0.0043738056, 0.9983395)
 bones/13/position = Vector3(-1.6307187e-08, 0.15368378, -3.3035645e-09)
-bones/13/rotation = Quaternion(0.38851887, 0.1986249, -0.08617928, 0.89564186)
+bones/13/rotation = Quaternion(0.436148, 0.1937001, -0.09674195, 0.8734394)
 bones/14/position = Vector3(1.8605126e-09, 0.20754749, -3.2998585e-08)
 bones/14/rotation = Quaternion(-0.4582507, 0.00016563239, -2.5947678e-05, 0.8888231)
 bones/15/position = Vector3(-5.6180607e-09, 0.25123596, -3.5406995e-08)
@@ -827,26 +814,26 @@ script = ExtResource("13_0odxb")
 metadata/_edit_group_ = true
 
 [node name="Skeleton3D" parent="GodotBotPlanet/Node3D/GB2/godot_plush_model/Rig" parent_id_path=PackedInt32Array(1667620355, 458721011, 1071284328) index="0" unique_id=268352740]
-bones/0/position = Vector3(0, 0.7816523, 0)
-bones/0/rotation = Quaternion(2.5216003e-05, -0.0028477777, -0.00793413, 0.99996454)
-bones/1/rotation = Quaternion(0.09243413, -0.16221753, 0.92422533, -0.33309004)
-bones/2/rotation = Quaternion(0.09243158, 0.019047156, -0.0017674689, 0.9955354)
-bones/4/rotation = Quaternion(0.04013519, 0.09543485, 0.93491215, 0.3394417)
-bones/5/rotation = Quaternion(0.3050566, 0.018216074, -0.0058372137, 0.9521422)
-bones/7/position = Vector3(0, 0.7816523, 0)
-bones/7/rotation = Quaternion(0.99996454, -0.00793413, 0.0028477774, -2.5185322e-05)
-bones/8/rotation = Quaternion(-0.059936564, -0.0052660005, -0.07651726, 0.99525124)
-bones/9/position = Vector3(-1.2672926e-08, 0.1523247, 7.4134623e-09)
-bones/9/rotation = Quaternion(0.25805002, -0.19546643, 0.05337373, 0.94464517)
-bones/10/position = Vector3(-6.230569e-09, 0.20615335, 2.7617366e-09)
-bones/10/rotation = Quaternion(-0.5636661, -0.016721558, 0.035762914, 0.82505876)
+bones/0/position = Vector3(0, 0.77292883, 0)
+bones/0/rotation = Quaternion(0.0002389784, 0.0758092, 0.0031278746, 0.99711746)
+bones/1/rotation = Quaternion(0.120424494, -0.21708398, 0.9104947, -0.33071437)
+bones/2/rotation = Quaternion(0.15157428, 0.027303083, -0.0041866517, 0.98805994)
+bones/4/rotation = Quaternion(0.06891148, 0.15089607, 0.9257577, 0.3397858)
+bones/5/rotation = Quaternion(0.24771443, 0.026759759, -0.006846656, 0.96843934)
+bones/7/position = Vector3(0, 0.77292883, 0)
+bones/7/rotation = Quaternion(0.99711746, 0.0031278783, -0.0758092, -0.00023893492)
+bones/8/rotation = Quaternion(-0.13830426, -0.005787678, -0.08431104, 0.98677766)
+bones/9/position = Vector3(-2.6457592e-08, 0.15172347, -7.7631146e-10)
+bones/9/rotation = Quaternion(0.32204017, -0.19402522, 0.06759177, 0.92416227)
+bones/10/position = Vector3(-1.5353097e-08, 0.20552686, 2.448158e-08)
+bones/10/rotation = Quaternion(-0.5546915, 0.06596227, 0.040336195, 0.82845604)
 bones/11/position = Vector3(-1.8974232e-08, 0.25121188, -1.34572575e-08)
 bones/11/rotation = Quaternion(-0.00010266324, 0.93244886, -0.36130205, 4.6266316e-05)
-bones/12/rotation = Quaternion(-0.034826674, 0.0023830482, 0.037660215, 0.9986807)
-bones/13/position = Vector3(2.2621657e-08, 0.15284006, -8.387126e-09)
-bones/13/rotation = Quaternion(0.20597702, 0.20508765, -0.0442028, 0.9558027)
-bones/14/position = Vector3(-2.5592524e-09, 0.2065599, 1.7391724e-09)
-bones/14/rotation = Quaternion(-0.5456404, 0.0073530627, -0.02623315, 0.8375765)
+bones/12/rotation = Quaternion(-0.02708399, 0.0035962448, 0.05576662, 0.99806994)
+bones/13/position = Vector3(8.496096e-09, 0.15199232, -2.3436117e-08)
+bones/13/rotation = Quaternion(0.27036414, 0.1969534, -0.056623567, 0.9406947)
+bones/14/position = Vector3(3.0069236e-09, 0.20581008, -9.325014e-09)
+bones/14/rotation = Quaternion(-0.5998992, 0.087535486, -0.021605538, 0.7949791)
 bones/15/position = Vector3(-4.381811e-08, 0.25120696, -3.54451e-08)
 bones/15/rotation = Quaternion(-2.7811215e-05, 0.9324604, -0.36127213, 0.00027790133)
 
@@ -866,26 +853,26 @@ script = ExtResource("13_0odxb")
 metadata/_edit_group_ = true
 
 [node name="Skeleton3D" parent="GodotBotPlanet/Node3D/GB3/godot_plush_model/Rig" parent_id_path=PackedInt32Array(1635832667, 458721011, 1071284328) index="0" unique_id=268352740]
-bones/0/position = Vector3(-0.014788233, 0.7240286, 9.571255e-05)
-bones/0/rotation = Quaternion(-0.0007873466, -0.010766253, 0.07182329, 0.997359)
-bones/1/rotation = Quaternion(0.06940785, -0.12921043, 0.8797081, -0.45232835)
-bones/2/rotation = Quaternion(0.29600102, 1.9427064e-07, -7.577543e-09, 0.95518774)
-bones/4/rotation = Quaternion(0.025844712, 0.0559157, 0.88738674, 0.45689216)
-bones/5/rotation = Quaternion(0.23093009, -2.768397e-07, 4.983189e-08, 0.9729704)
-bones/7/position = Vector3(-0.018193146, 0.7623509, 0)
-bones/7/rotation = Quaternion(0.99864954, 0.050820068, 0.010780334, 0.0005626397)
-bones/8/rotation = Quaternion(-0.52411485, -0.0019650548, -0.0274811, 0.85120183)
-bones/9/position = Vector3(2.138041e-08, 0.14879319, 4.530775e-08)
-bones/9/rotation = Quaternion(0.5763933, -0.098785065, 0.072234936, 0.80795693)
-bones/10/position = Vector3(-5.5719105e-09, 0.20220415, -1.5381505e-09)
-bones/10/rotation = Quaternion(-0.74494225, 0.0030521303, -0.045642868, 0.6655588)
+bones/0/position = Vector3(-0.014702909, 0.76574665, 0)
+bones/0/rotation = Quaternion(8.399268e-05, 0.0014418481, 0.06687739, 0.9977602)
+bones/1/rotation = Quaternion(0.10140818, -0.19146073, 0.8682882, -0.4462451)
+bones/2/rotation = Quaternion(0.25925913, 1.7437758e-07, -2.254869e-08, 0.96580786)
+bones/4/rotation = Quaternion(0.058280036, 0.11889802, 0.88116103, 0.45389625)
+bones/5/rotation = Quaternion(0.26796672, -2.8488017e-07, -2.6262303e-08, 0.96342826)
+bones/7/position = Vector3(-0.016693855, 0.7872152, 0)
+bones/7/rotation = Quaternion(0.99897283, 0.0452899, -0.0014432783, -5.386689e-05)
+bones/8/rotation = Quaternion(-0.38389307, 0.000962608, 0.01634933, 0.9232324)
+bones/9/position = Vector3(1.4343411e-08, 0.1537612, 8.293359e-09)
+bones/9/rotation = Quaternion(0.27833107, -0.09966284, 0.02955252, 0.95484334)
+bones/10/position = Vector3(-2.2946882e-08, 0.20757511, -2.5675268e-08)
+bones/10/rotation = Quaternion(-0.6415725, 0.022272984, -0.04198184, 0.7655889)
 bones/11/position = Vector3(2.7353977e-08, 0.2512972, 2.4622263e-08)
 bones/11/rotation = Quaternion(-9.2333896e-05, 0.9323885, -0.36145777, 4.2263364e-05)
-bones/12/rotation = Quaternion(0.44895437, 0.0037583935, 0.057898562, 0.891669)
-bones/13/position = Vector3(7.736626e-09, 0.17129928, 2.767933e-08)
-bones/13/rotation = Quaternion(4.2614334e-05, 0.08113446, -1.9874265e-05, 0.9967032)
-bones/14/position = Vector3(-1.4208101e-10, 0.22517897, -2.506984e-08)
-bones/14/rotation = Quaternion(-0.54213256, 0.024496833, -0.080752835, 0.83604497)
+bones/12/rotation = Quaternion(0.47301862, 0.0024408244, 0.038204458, 0.8802203)
+bones/13/position = Vector3(6.372816e-09, 0.19148138, 6.096896e-09)
+bones/13/rotation = Quaternion(-1.4377528e-06, 0.0826823, -1.624844e-05, 0.996576)
+bones/14/position = Vector3(8.475269e-09, 0.2453648, -1.8049057e-08)
+bones/14/rotation = Quaternion(-0.4837382, 0.025922494, -0.07858881, 0.87129164)
 bones/15/position = Vector3(-1.898326e-09, 0.25129607, -2.8430785e-08)
 bones/15/rotation = Quaternion(6.1026617e-06, 0.93238884, -0.36145654, 0.0002647265)
 
@@ -905,26 +892,26 @@ script = ExtResource("13_0odxb")
 metadata/_edit_group_ = true
 
 [node name="Skeleton3D" parent="GodotBotPlanet/Node3D/GB4/godot_plush_model/Rig" parent_id_path=PackedInt32Array(949826934, 458721011, 1071284328) index="0" unique_id=268352740]
-bones/0/position = Vector3(-0.028005451, 0.682037, -0.017727476)
-bones/0/rotation = Quaternion(0.12320697, -0.090581216, 0.08087543, 0.9849235)
-bones/1/rotation = Quaternion(-0.045122724, 0.07357439, 0.7696291, -0.6326309)
-bones/2/rotation = Quaternion(0.40554017, 0.025552923, -0.011604971, 0.9136464)
-bones/4/rotation = Quaternion(-0.07207899, -0.15421061, 0.7601812, 0.6270155)
-bones/5/rotation = Quaternion(0.11548797, 0.02790306, -0.0030037358, 0.99291235)
-bones/7/position = Vector3(-0.03864819, 0.754564, 0)
-bones/7/rotation = Quaternion(0.9860934, 0.06511516, 0.08859866, -0.124620445)
-bones/8/rotation = Quaternion(-0.84161246, -0.011254671, -0.16680333, 0.51355493)
-bones/9/position = Vector3(-7.6760625e-09, 0.14763443, -9.159318e-08)
-bones/9/rotation = Quaternion(0.9343449, -0.045689452, 0.14345816, 0.32300472)
-bones/10/position = Vector3(-1.2025147e-08, 0.19892712, 1.2112432e-08)
-bones/10/rotation = Quaternion(-0.13734658, -0.06890145, 0.060388017, 0.98627675)
+bones/0/position = Vector3(-0.022938427, 0.7388251, -0.023420405)
+bones/0/rotation = Quaternion(0.12513924, -0.06859254, 0.0771063, 0.9867572)
+bones/1/rotation = Quaternion(0.021085335, -0.055582765, 0.7680393, -0.6376376)
+bones/2/rotation = Quaternion(0.3718958, -0.0034603835, 0.0011884876, 0.9282673)
+bones/4/rotation = Quaternion(-0.0057711327, -0.025819315, 0.76927376, 0.63837147)
+bones/5/rotation = Quaternion(0.1518926, -0.0035843228, 0.0007365866, 0.9883903)
+bones/7/position = Vector3(-0.033111714, 0.8318895, 0)
+bones/7/rotation = Quaternion(0.9881047, 0.05732133, 0.0660714, -0.12648302)
+bones/8/rotation = Quaternion(-0.7229163, -0.0062611597, -0.09192702, 0.68476444)
+bones/9/position = Vector3(1.2990304e-09, 0.15030025, -1.05650805e-07)
+bones/9/rotation = Quaternion(0.65759236, -0.08616808, 0.07962283, 0.7441825)
+bones/10/position = Vector3(8.229864e-09, 0.20345916, 3.2742015e-08)
+bones/10/rotation = Quaternion(-0.20075186, -0.08221034, -0.0016219812, 0.9761852)
 bones/11/position = Vector3(-8.460832e-09, 0.25128454, 2.6575393e-08)
 bones/11/rotation = Quaternion(-9.447779e-05, 0.9323842, -0.36146885, 4.307012e-05)
-bones/12/rotation = Quaternion(-0.060634542, 0.010102458, 0.15286227, 0.98633397)
-bones/13/position = Vector3(-2.7968603e-08, 0.15148968, -1.616721e-08)
-bones/13/rotation = Quaternion(0.4880958, 0.02741463, -0.007125291, 0.8723304)
-bones/14/position = Vector3(1.515053e-08, 0.20500547, 8.034144e-08)
-bones/14/rotation = Quaternion(-0.72876656, -0.050822724, -0.09640188, 0.67603475)
+bones/12/rotation = Quaternion(0.3253363, 0.006369347, 0.09699054, 0.94058955)
+bones/13/position = Vector3(2.947439e-08, 0.1667259, -4.3277087e-08)
+bones/13/rotation = Quaternion(0.00044188893, 0.078407615, -5.1016254e-05, 0.99692136)
+bones/14/position = Vector3(-2.2907258e-08, 0.22060409, 3.6044337e-08)
+bones/14/rotation = Quaternion(-0.539323, -0.018360918, -0.09800305, 0.83617526)
 bones/15/position = Vector3(3.4537997e-08, 0.25128865, -1.7744516e-07)
 bones/15/rotation = Quaternion(4.283824e-06, 0.9323838, -0.3614699, 0.00026539937)
 
@@ -1022,6 +1009,8 @@ transform = Transform3D(1, 0, 0, 0, -0.92875135, 0.37070328, 0, -0.37070328, -0.
 
 [node name="Timer" type="Timer" parent="." unique_id=1618992170]
 one_shot = true
+
+[node name="PauseMenu" parent="." unique_id=312214796 instance=ExtResource("31_seu75")]
 
 [connection signal="player_made_a_choice" from="Player" to="UI" method="_on_player_player_made_a_choice"]
 [connection signal="timeout" from="Timer" to="WelcomeBot" method="_on_timer_timeout"]

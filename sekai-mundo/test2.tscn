@@ -1,0 +1,7 @@
+[gd_scene format=3 uid="uid://b4wbpky06ogxe"]
+
+[ext_resource type="Script" uid="uid://bphpicv2o78md" path="res://pause_menu.gd" id="1_vfvc6"]
+
+[node name="CanvasLayer" type="CanvasLayer" unique_id=1844936806]
+process_mode = 3
+script = ExtResource("1_vfvc6")

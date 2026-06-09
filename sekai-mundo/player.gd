@@ -46,7 +46,7 @@ func _process(_delta: float) -> void:
 		current_bot = null
 	
 	# Even if player is not close to the same bot, dump the transmission
-	if Input.is_action_just_pressed("ui_cancel"):
+	if Input.is_action_just_pressed("remove_transmission"):
 		transmission_received = null
 		$"../UI/Control/Label2".visible = false
 	
